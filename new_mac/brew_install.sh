@@ -24,6 +24,7 @@ brew install jq
 brew install eza
 brew install node
 brew install stow
+brew install nmap
 
 ### Quicklook plugins https://github.com/sindresorhus/quick-look-plugins
 brew install --cask qlcolorcode    # syntax highlighting in preview
