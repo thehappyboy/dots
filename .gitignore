@@ -1,0 +1,14 @@
+# macos generated
+.DS_Store
+.fseventsd
+.Spotlight-V100
+.Trashes
+
+# fzf-bindings
+fzf_key_bindings.fish
+
+# virtualfish-loader
+virtualfish-loader.fish
+
+# ssh
+ssh/

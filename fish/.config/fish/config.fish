@@ -1,0 +1,60 @@
+set -Ux fish_user_paths
+fish_add_path /usr/local/sbin/
+
+# misc
+abbr qs "open -a Qspace\ Pro"
+abbr python "python3"
+abbr pip "pip3"
+abbr h "history"
+abbr md "mkdir -p"
+abbr rmr "rm -rf"
+abbr p "ps -f"
+abbr grep "grep --color"
+abbr vd "cd ~/.config/nvim; nvim"
+
+if command -sq lazygit
+  abbr lg lazygit
+end
+
+if command -sq bat
+  abbr cat bat
+end
+
+if command -sq nvim
+  alias vim="nvim"
+  alias vi="nvim"
+  alias v="nvim"
+  set -gx EDITOR nvim
+end
+
+if command -sq vf
+  abbr vfn "vf new"
+  abbr vfa "vf activate"
+  abbr vfd "vf deactivate"
+end
+
+if command -sq brew
+  abbr bws "brew search"
+  abbr bwi "brew install"
+  abbr bwc "brew install --cask"
+  abbr bwu "brew update"
+end
+
+if command -sq brew
+  abbr g "git"
+  abbr ga "git add"
+  abbr gaa "git add --all"
+  abbr gst "git status"
+  abbr gc "git clone"
+  abbr gcm "git commit -m"
+  abbr gl  "git log"
+end
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
+if command -sq starship
+  starship init fish | source
+end

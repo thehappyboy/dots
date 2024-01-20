@@ -1,0 +1,63 @@
+{
+  "name": "my-snippets",
+  "engines": {
+    "vscode": "^1.11.0"
+  },
+  "contributes": {
+    "snippets": [
+      {
+        "language": "norg",
+        "path": "./snippets/norg.json"
+      },
+      {
+        "language": [
+          "all"
+        ],
+        "path": "./snippets/all.json"
+      },
+      {
+        "language": [
+          "python",
+          "django"
+        ],
+        "path": "./snippets/python.json"
+      },
+      {
+        "language": [
+          "lua"
+        ],
+        "path": "./snippets/lua.json"
+      },
+      {
+        "language": [
+          "html",
+          "javascript"
+        ],
+        "path": "./snippets/html.json"
+      },
+      {
+        "language": [
+          "htmldjango"
+        ],
+        "path": "./snippets/htmldjango.json"
+      },
+      {
+        "language": [
+          "css",
+          "scss",
+          "sass",
+          "less",
+          "stylus"
+        ],
+        "path": "./snippets/css.json"
+      },
+      {
+        "language": [
+          "markdown",
+          "rmd"
+        ],
+        "path": "./snippets/markdown.json"
+      }
+    ]
+  }
+}
