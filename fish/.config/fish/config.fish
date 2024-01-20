@@ -40,6 +40,15 @@ if command -sq brew
     abbr bwu "brew update"
 end
 
+
+if command -sq tmux
+    abbr t tmux
+    abbr tc "tmux attach"
+    abbr ta "tmux attach -t"
+    abbr tl "tmux ls"
+    abbr tk "tmux kill-session -t"
+end
+
 if command -sq git
     abbr g git
     abbr ga "git add"
