@@ -51,6 +51,10 @@ brew install --cask qspace-pro
 brew install --cask easydict
 brew install --cask tencent-lemnon
 
+### docker
+brew install --cask docker
+brew install docker-compose
+
 ### fonts
 font_list=(
 	font-hurmit-nerd-font
