@@ -50,6 +50,7 @@ brew install --cask kitty
 brew install --cask qspace-pro
 brew install --cask easydict
 brew install --cask tencent-lemnon
+brew install --cask logi-options-plus
 
 ### docker
 brew install --cask docker
