@@ -40,6 +40,7 @@ brew install --cask feishu
 brew install --cask wechat
 brew install --cask obsidian
 brew install --cask zotero
+brew install --cask islide
 
 ### web tools
 brew install adrive
