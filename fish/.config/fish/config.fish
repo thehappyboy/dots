@@ -1,6 +1,6 @@
 set -Ux fish_user_paths
 fish_add_path /usr/local/sbin/
-fish_add_path /Library/Frameworks/Python.framework/Versions/3.12/bin/
+# fish_add_path /Library/Frameworks/Python.framework/Versions/3.12/bin/
 
 # misc
 abbr qs "open -a Qspace\ Pro"

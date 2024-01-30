@@ -59,6 +59,7 @@ brew install --cask docker
 brew install docker-compose
 
 ### python
+brew install python python-tk
 brew install --cask miniconda
 
 ### fonts
