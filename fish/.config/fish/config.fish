@@ -4,8 +4,8 @@ fish_add_path /Library/Frameworks/Python.framework/Versions/3.12/bin/
 
 # misc
 abbr qs "open -a Qspace\ Pro"
-abbr python python3
-abbr pip pip3
+# abbr python python3
+# abbr pip pip3
 abbr h history
 abbr md "mkdir -p"
 abbr rmr "rm -rf"
@@ -32,6 +32,12 @@ if command -sq vf
     abbr vfn "vf new"
     abbr vfa "vf activate"
     abbr vfd "vf deactivate"
+end
+
+if command -sq conda
+    abbr cc "conda create -n"
+    abbr ca "conda activate"
+    abbr cd "conda deactivate"
 end
 
 if command -sq brew

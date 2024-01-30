@@ -52,10 +52,14 @@ brew install --cask qspace-pro
 brew install --cask easydict
 brew install --cask tencent-lemnon
 brew install --cask logi-options-plus
+brew install --cask iina
 
 ### docker
 brew install --cask docker
 brew install docker-compose
+
+### python
+brew install --cask miniconda
 
 ### fonts
 font_list=(
