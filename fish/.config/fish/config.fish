@@ -34,9 +34,9 @@ if command -sq vf
 end
 
 if command -sq conda
-    abbr cc "conda create -n"
-    abbr ca "conda activate"
-    abbr cd "conda deactivate"
+    abbr cdc "conda create -n"
+    abbr cda "conda activate"
+    abbr cdd "conda deactivate"
 end
 
 if command -sq brew
