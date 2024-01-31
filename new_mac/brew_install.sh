@@ -27,13 +27,13 @@ brew install stow
 brew install nmap # use ncat for ssh proxy
 brew install tmux
 
-### Quicklook plugins https://github.com/sindresorhus/quick-look-plugins
-brew install --cask qlcolorcode    # syntax highlighting in preview
-brew install --cask qlstephen      # preview plaintext files without extension
-brew install --cask qlmarkdown     # preview markdown files
-brew install --cask quicklook-json # preview json files
-brew install --cask epubquicklook  # preview epubs, make nice icons
-brew install --cask quicklook-csv  # preview csvs
+# ### Quicklook plugins https://github.com/sindresorhus/quick-look-plugins
+# brew install --cask qlcolorcode    # syntax highlighting in preview
+# brew install --cask qlstephen      # preview plaintext files without extension
+# brew install --cask qlmarkdown     # preview markdown files
+# brew install --cask quicklook-json # preview json files
+# brew install --cask epubquicklook  # preview epubs, make nice icons
+# brew install --cask quicklook-csv  # preview csvs
 
 ### Chat and work
 brew install --cask feishu
@@ -50,7 +50,7 @@ brew install --cask microsoft-edge
 brew install --cask kitty
 brew install --cask qspace-pro
 brew install --cask easydict
-brew install --cask tencent-lemnon
+brew install --cask tencent-lemon
 brew install --cask logi-options-plus
 brew install --cask iina
 
