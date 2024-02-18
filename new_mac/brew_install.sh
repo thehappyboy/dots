@@ -6,7 +6,7 @@ echo "Installing brew..."
 
 if test ! $(which brew); then
 	## Don't prompt for confirmation when installing homebrew
-	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" </dev/null
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" </dev/null
 fi
 
 echo "starting brew install..."
@@ -26,14 +26,12 @@ brew install node
 brew install stow
 brew install nmap # use ncat for ssh proxy
 brew install tmux
+brew install gnu-sed
+brew install fzf
+$(brew --prefix)/opt/fzf/install --all
 
-# ### Quicklook plugins https://github.com/sindresorhus/quick-look-plugins
-# brew install --cask qlcolorcode    # syntax highlighting in preview
-# brew install --cask qlstephen      # preview plaintext files without extension
-# brew install --cask qlmarkdown     # preview markdown files
-# brew install --cask quicklook-json # preview json files
-# brew install --cask epubquicklook  # preview epubs, make nice icons
-# brew install --cask quicklook-csv  # preview csvs
+brew tap homebrew/cask-versions
+brew tap homebrew/cask-fonts
 
 ### Chat and work
 brew install --cask feishu
@@ -57,25 +55,23 @@ brew install --cask iina
 ### docker
 brew install --cask docker
 brew install docker-compose
+mkdir -p ~/.docker/cli-plugins
+ln -sfn /usr/local/opt/docker-compose/bin/docker-compose ~/.docker/cli-plugins/docker-compose
 
 ### python
 brew install python python-tk
 brew install --cask miniconda
 
 ### fonts
-font_list=(
+#
+FONTS=(
 	font-hurmit-nerd-font
 	font-jetbrains-mono-nerd-font
 	font-victor-mono-nerd-font
 	font-hack-nerd-font
 	font-sauce-code-pro-nerd-font
 )
-
-brew tap homebrew/cask-fonts
-
-for font in "${fonts_list[@]}"; do
-	brew install --cask "$font"
-done
+brew install --cask "${FONTS[@]}"
 
 # Ask for the administrator password upfront
 sudo -v
