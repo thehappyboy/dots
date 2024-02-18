@@ -17,10 +17,15 @@
       },
       {
         "language": [
-          "python",
-          "django"
+          "python"
         ],
         "path": "./snippets/python.json"
+      },
+      {
+        "language": [
+          "django"
+        ],
+        "path": "./snippets/django.json"
       },
       {
         "language": [

@@ -1,6 +1,10 @@
 set -Ux fish_user_paths
 fish_add_path /usr/local/sbin/
 
+set -Ux https_proxy "http://127.0.0.1:7890"
+set -Ux http_proxy "http://127.0.0.1:7890"
+set -Ux all_proxy "socks5://127.0.0.1:7890"
+
 # misc
 abbr qs "open -a Qspace\ Pro"
 # abbr python python3
