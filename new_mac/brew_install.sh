@@ -18,6 +18,8 @@ brew install neofetch
 brew install starship
 brew install zoxide
 brew install lazygit
+brew install pandoc
+brew install gh
 brew install joshuto
 brew install fish
 brew install jq
@@ -34,15 +36,16 @@ brew tap homebrew/cask-versions
 brew tap homebrew/cask-fonts
 
 ### Chat and work
-brew install --cask feishu
+brew install --cask lark
 brew install --cask wechat
 brew install --cask obsidian
-brew install --cask zotero
+brew install --cask zotero-beta
 brew install --cask islide
 
 ### web tools
 brew install adrive
-brew install --cask microsoft-edge
+brew install --cask microsoft-edge-dev
+brew install --cask arc
 
 ### system enhancement
 brew install --cask kitty
@@ -51,6 +54,8 @@ brew install --cask easydict
 brew install --cask tencent-lemon
 brew install --cask logi-options-plus
 brew install --cask iina
+brew install --cask macfuse
+brew install --cask plistedit-pro
 
 ### docker
 brew install --cask docker
@@ -59,19 +64,13 @@ mkdir -p ~/.docker/cli-plugins
 ln -sfn /usr/local/opt/docker-compose/bin/docker-compose ~/.docker/cli-plugins/docker-compose
 
 ### python
-brew install python python-tk
 brew install --cask miniconda
+brew install --HEAD neovim
 
 ### fonts
 #
-FONTS=(
-	font-hurmit-nerd-font
-	font-jetbrains-mono-nerd-font
-	font-victor-mono-nerd-font
-	font-hack-nerd-font
-	font-sauce-code-pro-nerd-font
-)
-brew install --cask "${FONTS[@]}"
+
+brew install --cask font-sauce-code-pro-nerd-font font-victor-mono-nerd-font
 
 # Ask for the administrator password upfront
 sudo -v
@@ -82,8 +81,5 @@ while true; do
 	sleep 60
 	kill -0 "$$" || exit
 done 2>/dev/null &
-
-# remove default input method
-cp ./com.apple.HIToolbox.plist ~/Library/Preferences/com.apple.HIToolbox.plist
 
 exit

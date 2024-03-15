@@ -16,7 +16,7 @@ require('lazy').setup({
     { import = 'lazyvim.plugins.extras.coding.codeium' },
     { import = 'lazyvim.plugins.extras.dap.core' },
     { import = 'lazyvim.plugins.extras.editor.aerial' },
-    { import = 'lazyvim.plugins.extras.editor.symbols-outline' },
+    { import = 'lazyvim.plugins.extras.editor.outline' },
     { import = 'lazyvim.plugins.extras.lang.json' },
     { import = 'lazyvim.plugins.extras.lang.python-semshi' },
     { import = 'lazyvim.plugins.extras.lang.python' },
