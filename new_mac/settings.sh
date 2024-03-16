@@ -14,6 +14,9 @@ while true; do
 	kill -0 "$$" || exit
 done 2>/dev/null &
 
+spctl --master-disable
+pwpolicy -claeraccountpolicies
+
 ###############################################################################
 # General UI/UX                                                               #
 ###############################################################################
@@ -175,7 +178,7 @@ defaults write com.apple.finder NewWindowTarget -string "PfDe"
 defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Desktop/"
 
 # Show icons for hard drives, servers, and removable media on the desktop
-defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool false
+defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
 defaults write com.apple.finder ShowHardDrivesOnDesktop -bool false
 defaults write com.apple.finder ShowMountedServersOnDesktop -bool false
 defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
