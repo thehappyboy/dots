@@ -4,7 +4,7 @@
 
 echo "Installing brew..."
 
-if test ! $(which brew); then
+if test !$(which brew); then
 	## Don't prompt for confirmation when installing homebrew
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" </dev/null
 fi
@@ -48,6 +48,7 @@ brew install --cask microsoft-edge-dev
 brew install --cask arc
 
 ### system enhancement
+brew install --cask warp
 brew install --cask kitty
 brew install --cask qspace-pro
 brew install --cask easydict
@@ -61,16 +62,11 @@ brew install --cask plistedit-pro
 brew install --cask docker
 brew install docker-compose
 mkdir -p ~/.docker/cli-plugins
-ln -sfn /usr/local/opt/docker-compose/bin/docker-compose ~/.docker/cli-plugins/docker-compose
+# ln -sfn /usr/local/opt/docker-compose/bin/docker-compose ~/.docker/cli-plugins/docker-compose
 
 ### python
 brew install --cask miniconda
 brew install --HEAD neovim
-
-### fonts
-#
-
-brew install --cask font-sauce-code-pro-nerd-font font-victor-mono-nerd-font
 
 # Ask for the administrator password upfront
 sudo -v
