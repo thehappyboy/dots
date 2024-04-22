@@ -15,7 +15,7 @@ while true; do
 done 2>/dev/null &
 
 spctl --master-disable
-pwpolicy -claeraccountpolicies
+pwpolicy -clearaccountpolicies
 
 ###############################################################################
 # General UI/UX                                                               #
@@ -243,7 +243,7 @@ defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 defaults write com.apple.finder WarnOnEmptyTrash -bool false
 
 # Show the ~/Library folder
-chflags nohidden ~/Library && xattr -d com.apple.FinderInfo ~/Library
+chflags nohidden ~/Library
 
 # Show the /Volumes folder
 # sudo chflags nohidden /Volumes
