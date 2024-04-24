@@ -48,6 +48,7 @@ if command -sq brew
     abbr bwi "brew install"
     abbr bwc "brew install --cask"
     abbr bwu "brew update"
+    abbr bcu "brew cleanup --prune all"
 end
 
 
@@ -71,6 +72,10 @@ if command -sq git
     abbr gpl "git pull"
     abbr grm "git rm"
     abbr grmc "git rm --cached"
+end
+
+if command -sq code-insiders
+    abbr code code-insiders
 end
 
 alias ..="cd .."
