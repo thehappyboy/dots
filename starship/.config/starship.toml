@@ -104,7 +104,6 @@ symbol = " "
 symbol = " "
 
 [os.symbols]
-Alpaquita = " "
 Alpine = " "
 Amazon = " "
 Android = " "
@@ -116,10 +115,7 @@ Emscripten = " "
 EndeavourOS = " "
 Fedora = " "
 FreeBSD = " "
-Garuda = "󰛓 "
 Gentoo = " "
-HardenedBSD = "󰞌 "
-Illumos = "󰈸 "
 Linux = " "
 Macos = " "
 Manjaro = " "
@@ -128,17 +124,7 @@ MidnightBSD = " "
 Mint = " "
 NetBSD = " "
 NixOS = " "
-OpenBSD = "󰈺 "
 openSUSE = " "
-OracleLinux = "󰌷 "
-Pop = " "
-Raspbian = " "
-Redhat = " "
-RedHatEnterprise = " "
-Redox = "󰀘 "
-Solus = "󰠳 "
-SUSE = " "
-Windows = "󰍲 "
 
 [package]
 symbol = "󰏗 "
@@ -149,17 +135,9 @@ symbol = "🪺 "
 [python]
 symbol = " "
 
-[rlang]
-symbol = "󰟔 "
-
 [ruby]
 symbol = " "
 
 [rust]
 symbol = " "
 
-[scala]
-symbol = " "
-
-[spack]
-symbol = "🅢 "
