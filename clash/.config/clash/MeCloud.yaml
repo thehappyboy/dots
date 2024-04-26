@@ -3169,7 +3169,7 @@ rules:
   - IP-CIDR,101.199.196.0/22,🎯 直连,no-resolve
   - GEOIP,CN,🎯 直连
   - MATCH,🐟 漏网之鱼
-  - DOMAIN,api.adguard.org,REJECT
+  - DOMAIN-SUFFIX,api.adguard.org,REJECT
   - DOMAIN-SUFFIX,appstorrent.su,🎯 直连
   - DOMAIN-SUFFIX,appstorrent.ru,🎯 直连
-
+  - DOMAIN-SUFFIX,microsoft.com,🚀 节点选择
