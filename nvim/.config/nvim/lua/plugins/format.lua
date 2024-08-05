@@ -3,9 +3,7 @@ return {
     'williamboman/mason.nvim',
     opts = function(_, opts)
       vim.list_extend(opts.ensure_installed, {
-        'black',
         'isort',
-        'prettier',
         'djlint',
       })
     end,
@@ -15,6 +13,7 @@ return {
     opts = {
       formatters_by_ft = {
         ['python'] = { 'isort', 'black' },
+        ['htmldjango'] = { 'prettier', 'djlint' },
       },
       formatters = {
         black = {

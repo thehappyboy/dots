@@ -30,9 +30,24 @@ return {
           },
         },
       },
+      basedpyright = {
+        settings = {
+          basedpyright = {
+            analysis = {
+              diagnosticSeverityOverrides = {
+                reportImplicitOverride = false,
+                reportUnknownVariableType = false,
+                -- reportMissingParameterType = false,
+                reportUnknownParameterType = false,
+                reportUnkownVariableType = false,
+              },
+            },
+          },
+        },
+      },
     },
     setup = {
-      ['*'] = function(server, opts)
+      ['*'] = function(server, _)
         require('lspconfig')[server].setup({ handlers = handlers })
       end,
     },

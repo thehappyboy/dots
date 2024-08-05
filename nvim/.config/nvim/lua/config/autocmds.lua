@@ -19,26 +19,20 @@ local function is_django_project()
 end
 
 local function set_py_file_for_django()
-  local file_type = vim.bo.filetype
-  local ls_exists, luasnip = pcall(require, 'luasnip')
+  local ok, _ = pcall(require, 'snippets')
 
-  if file_type == 'python' and is_django_project() then
-    if ls_exists then
-      luasnip.filetype_extend('python', { 'django' })
-      vim.treesitter.language.register('python', 'django')
-    end
+  if ok and is_django_project() then
+    -- use the python tree-sitter to highlight file with filetype=django
+    vim.treesitter.language.register('python', 'django')
   end
 end
 
 local function set_html_file_for_django()
-  local file_type = vim.bo.filetype
-  local ls_exists, luasnip = pcall(require, 'luasnip')
+  local ok, _ = pcall(require, 'snippets')
 
-  if file_type == 'html' and is_django_project() then
+  if ok and is_django_project() then
     vim.bo.filetype = 'htmldjango'
-    if ls_exists then
-      luasnip.filetype_extend('htmldjango', { 'html' })
-    end
+    vim.treesitter.language.register('html', 'htmldjango')
   end
 end
 
