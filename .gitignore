@@ -12,6 +12,7 @@ virtualfish-loader.fish
 
 # lazyvim
 lazy-lock.json
+lazyvim.json
 
 # ssh
 ssh/
