@@ -19,18 +19,6 @@ return {
   },
 
   {
-    'smoka7/multicursors.nvim',
-    event = 'VeryLazy',
-    dependencies = 'smoka7/hydra.nvim',
-    opts = {},
-    cmd = { 'MCstart', 'MCvisual', 'MCclear', 'MCpattern', 'MCvisualPattern', 'MCunderCursor' },
-    -- stylua: ignore
-    keys = {
-      { mode = { 'v', 'n' }, '<leader>m', '<cmd>MCstart<cr>', desc = 'Multicursor' },
-    },
-  },
-
-  {
     'chrisgrieser/nvim-origami',
     event = 'BufReadPost', -- later or on keypress would prevent saving folds
     opts = {}, -- needed even when using default config
