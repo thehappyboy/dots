@@ -7,8 +7,6 @@ set -Ux all_proxy "socks5://127.0.0.1:7890"
 
 # misc
 abbr qs "open -a Qspace\ Pro"
-# abbr python python3
-# abbr pip pip3
 abbr h history
 abbr md "mkdir -p"
 abbr rmr "rm -rf"
@@ -29,12 +27,6 @@ if command -sq nvim
     alias vi="nvim"
     alias v="nvim"
     set -gx EDITOR nvim
-end
-
-if command -sq vf
-    abbr vfn "vf new"
-    abbr vfa "vf activate"
-    abbr vfd "vf deactivate"
 end
 
 if command -sq conda
@@ -82,7 +74,3 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
-
-if command -sq starship
-    starship init fish | source
-end
