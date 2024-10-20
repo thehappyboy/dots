@@ -1,0 +1,47 @@
+{
+  "workbench.activityBar.orientation": "vertical",
+  // 启用平滑滚动
+  "workbench.list.smoothScrolling": true,
+  "window.commandCenter": 1,
+  "editor.fontFamily": "'Hurmit Nerd Font Mono', 'LXGWNeoXiHei Nerd Font'",
+  "editor.fontSize": 13,
+  // 启用括号对的活动引导线
+  "editor.guides.bracketPairs": "active",
+  // 自动插入闭合的括号
+  "editor.autoClosingBrackets": "always",
+  "editor.inlineSuggest.enabled": true,
+  "cursor.composer.collapsePaneInputBoxPills": true,
+  // 保存文件时自动删除行尾的空白字符
+  "files.trimTrailingWhitespace": true,
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 20000,
+  "files.eol": "\n",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "prettier.semi": false,
+  "prettier.printWidth": 80,
+  "prettier.singleQuote": true,
+  "editor.formatOnSave": true,
+  "workbench.colorTheme": "Snazzy Operator",
+  "workbench.iconTheme": "material-icon-theme",
+  "explorer.compactFolders": false,
+  "[html]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.tabSize": 4
+  },
+  "liveServer.settings.donotShowInfoMsg": true,
+  "black-formatter.args": ["-S"],
+  "window.newWindowProfile": "默认"
+}
