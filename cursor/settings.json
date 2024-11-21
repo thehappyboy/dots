@@ -43,5 +43,24 @@
   },
   "liveServer.settings.donotShowInfoMsg": true,
   "black-formatter.args": ["-S"],
-  "window.newWindowProfile": "默认"
+  "cursor.chat.alwaysSearchWeb": true,
+  "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  "vscode-neovim.compositeKeys": {
+    "jj": {
+      "command": "vscode-neovim.escape"
+    },
+    "jk": {
+      "command": "vscode-neovim.lua",
+      "args": [
+        [
+          "local code = require('vscode')",
+          "code.action('vscode-neovim.escape')",
+          "code.action('workbench.action.files.save')"
+        ]
+      ]
+    }
+  }
 }
