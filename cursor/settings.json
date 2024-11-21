@@ -62,5 +62,24 @@
         ]
       ]
     }
-  }
+  },
+  "extensions.ignoreRecommendations": false,
+  "extensions.autoUpdate": true,
+  "extensions.autoUpdate.enabled": true,
+  "recommendations": [
+    "ms-ceintl.vscode-language-pack-zh-hans",
+    "ms-python.debugpy",
+    "ms-python.python",
+    "esbenp.prettier-vscode",
+    "ritwickdey.liveserver",
+    "ms-python.vscode-pylance",
+    "ecmel.vscode-html-css",
+    "aaronthomas.vscode-snazzy-operator",
+    "ms-python.black-formatter",
+    "pkief.material-icon-theme",
+    "pranaygp.vscode-css-peek",
+    "vincaslt.highlight-matching-tag",
+    "wayou.vscode-todo-highlight",
+    "asvetliakov.vscode-neovim"
+  ]
 }
