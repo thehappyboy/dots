@@ -12,7 +12,6 @@ abbr md "mkdir -p"
 abbr rmr "rm -rf"
 abbr p "ps -f"
 abbr grep "grep --color"
-abbr vd "cd ~/.config/nvim; nvim"
 
 if command -sq lazygit
     abbr lg lazygit
@@ -64,10 +63,6 @@ if command -sq git
     abbr gpl "git pull"
     abbr grm "git rm"
     abbr grmc "git rm --cached"
-end
-
-if command -sq code-insiders
-    abbr code code-insiders
 end
 
 alias ..="cd .."
