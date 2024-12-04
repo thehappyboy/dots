@@ -16,7 +16,6 @@
   "files.autoSave": "afterDelay",
   "files.autoSaveDelay": 20000,
   "files.eol": "\n",
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "prettier.semi": false,
   "prettier.printWidth": 80,
   "prettier.singleQuote": true,
@@ -24,23 +23,7 @@
   "workbench.colorTheme": "Snazzy Operator",
   "workbench.iconTheme": "material-icon-theme",
   "explorer.compactFolders": false,
-  "[html]": {
-    "editor.tabSize": 2,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[css]": {
-    "editor.tabSize": 2,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[javascript]": {
-    "editor.insertSpaces": true,
-    "editor.tabSize": 2,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[python]": {
-    "editor.defaultFormatter": "ms-python.black-formatter",
-    "editor.tabSize": 4
-  },
+
   "liveServer.settings.donotShowInfoMsg": true,
   "black-formatter.args": ["-S"],
   "cursor.chat.alwaysSearchWeb": true,
