@@ -1,17 +1,13 @@
 {
   "workbench.activityBar.orientation": "vertical",
-  // 启用平滑滚动
   "workbench.list.smoothScrolling": true,
   "window.commandCenter": 1,
   "editor.fontFamily": "'Hurmit Nerd Font Mono', 'LXGWNeoXiHei Nerd Font'",
   "editor.fontSize": 13,
-  // 启用括号对的活动引导线
-  "editor.guides.bracketPairs": "active",
-  // 自动插入闭合的括号
+  "editor.formatOnSave": true,
   "editor.autoClosingBrackets": "always",
   "editor.inlineSuggest.enabled": true,
-  "cursor.composer.collapsePaneInputBoxPills": true,
-  // 保存文件时自动删除行尾的空白字符
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "files.trimTrailingWhitespace": true,
   "files.autoSave": "afterDelay",
   "files.autoSaveDelay": 20000,
@@ -19,50 +15,15 @@
   "prettier.semi": false,
   "prettier.printWidth": 80,
   "prettier.singleQuote": true,
-  "editor.formatOnSave": true,
-  "workbench.colorTheme": "Snazzy Operator",
+  "workbench.colorTheme": "GitHub Dark",
   "workbench.iconTheme": "material-icon-theme",
-  "explorer.compactFolders": false,
-
-  "liveServer.settings.donotShowInfoMsg": true,
-  "black-formatter.args": ["-S"],
-  "cursor.chat.alwaysSearchWeb": true,
-  "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
-  "extensions.experimental.affinity": {
-    "asvetliakov.vscode-neovim": 1
+  "[python]": {
+    "editor.tabSize": 4,
+    "editor.defaultFormatter": "charliermarsh.ruff"
   },
-  "vscode-neovim.compositeKeys": {
-    "jj": {
-      "command": "vscode-neovim.escape"
-    },
-    "jk": {
-      "command": "vscode-neovim.lua",
-      "args": [
-        [
-          "local code = require('vscode')",
-          "code.action('vscode-neovim.escape')",
-          "code.action('workbench.action.files.save')"
-        ]
-      ]
-    }
-  },
-  "extensions.ignoreRecommendations": false,
-  "extensions.autoUpdate": true,
-  "extensions.autoUpdate.enabled": true,
-  "recommendations": [
-    "ms-ceintl.vscode-language-pack-zh-hans",
-    "ms-python.debugpy",
-    "ms-python.python",
-    "esbenp.prettier-vscode",
-    "ritwickdey.liveserver",
-    "ms-python.vscode-pylance",
-    "ecmel.vscode-html-css",
-    "aaronthomas.vscode-snazzy-operator",
-    "ms-python.black-formatter",
-    "pkief.material-icon-theme",
-    "pranaygp.vscode-css-peek",
-    "vincaslt.highlight-matching-tag",
-    "wayou.vscode-todo-highlight",
-    "asvetliakov.vscode-neovim"
-  ]
+  "[html]": {
+    "editor.tabSize": 4,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
+
