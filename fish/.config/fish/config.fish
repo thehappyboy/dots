@@ -1,5 +1,6 @@
 set -Ux fish_user_paths
 fish_add_path /usr/local/sbin/
+fish_add_path ~/.cargo/bin/
 
 set -Ux https_proxy "http://127.0.0.1:7890"
 set -Ux http_proxy "http://127.0.0.1:7890"
