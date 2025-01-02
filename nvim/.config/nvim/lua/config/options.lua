@@ -1,7 +1,11 @@
-vim.g.loaded_python_provider = 0
+-- Options are automatically loaded before lazy.nvim startup
+-- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
+-- Add any additional options here
+vim.g.python3_host_prog = "/usr/local/Caskroom/miniconda/base/envs/nvim/bin/python"
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
-vim.g.python3_host_prog = vim.fn.expand('/usr/local/Caskroom/miniconda/base/envs/nvim/bin/python3')
 
-vim.g.lazyvim_python_lsp = 'basedpyright'
-vim.o.spelllang = 'en_us,cjk'
+-- Set to "basedpyright" to use basedpyright instead of pyright.
+vim.g.lazyvim_python_lsp = "pyright"
+-- Set to "ruff_lsp" to use the old LSP implementation version.
+vim.g.lazyvim_python_ruff = "ruff"

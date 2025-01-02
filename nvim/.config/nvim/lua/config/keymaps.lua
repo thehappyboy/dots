@@ -1,21 +1,3 @@
-local function clear()
-  local has = require('lazyvim.util').has
-  vim.cmd('nohlsearch')
-  vim.lsp.buf.clear_references()
-  if has('nvim-notify') then
-    require('notify').dismiss({ pending = true, silent = true })
-  end
-  if has('hlslens') then
-    require('hlslens.main').stop()
-  end
-end
-
-vim.keymap.set('n', '<esc>', clear, { desc = 'clear' })
-
--- increment/decrement
-vim.keymap.set('n', '+', '<c-a>')
-vim.keymap.set('n', '-', '<c-x>')
-
--- jump list
-vim.keymap.set('n', '[j', '<c-o>')
-vim.keymap.set('n', ']j', '<c-i>')
+-- Keymaps are automatically loaded on the VeryLazy event
+-- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
+-- Add any additional keymaps here

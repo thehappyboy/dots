@@ -1,44 +1,12 @@
-tap "homebrew/bundle"
-tap "homebrew/services"
-brew "bat"
-brew "bottom"
+
 brew "btop"
-brew "eza"
-brew "fd"
-brew "fish"
-brew "fzf"
-brew "gh"
-brew "glow"
-brew "gnu-sed"
-brew "joshuto"
-brew "jq"
-brew "lazygit"
-brew "luarocks"
-brew "mysql", restart_service: true
-brew "utf8proc", args: ["HEAD"]
-brew "neovim", args: ["HEAD"]
-brew "nmap"
-brew "node"
+
+
 brew "pandoc"
-brew "pkgconf"
-brew "redis", restart_service: true
-brew "ripgrep"
-brew "stow"
-brew "wget"
-brew "zoxide"
-cask "calibre"
-cask "cursor"
+
+
 cask "docker"
-cask "easydict"
-cask "feishu"
-cask "iina"
-cask "logi-options+"
+
 cask "macfuse"
-cask "microsoft-edge"
 cask "miniconda"
-cask "movist-pro"
-cask "obsidian"
-cask "plistedit-pro"
-cask "tencent-lemon"
-cask "warp"
-cask "wechat"
+

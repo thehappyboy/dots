@@ -2,6 +2,14 @@ set -Ux fish_user_paths
 fish_add_path /usr/local/sbin/
 fish_add_path /usr/local/mysql/bin/
 
+# 获取 macOS 版本号
+set macos_version (sw_vers -productVersion | cut -d. -f1,2)
+
+# 检查 macOS 版本是否为 12 或更早
+if test (string compare -l $macos_version 12) -le 0
+    export HOMEBREW_NO_INSTALL_FROM_API=1
+    export HOMEBREW_NO_AUTO_UPDATE=1
+end
 
 set -Ux https_proxy "http://127.0.0.1:7890"
 set -Ux http_proxy "http://127.0.0.1:7890"
