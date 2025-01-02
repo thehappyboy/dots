@@ -7,9 +7,10 @@ set macos_version (sw_vers -productVersion | cut -d. -f1)
 
 # 检查 macOS 版本是否为 12 或更早
 if test (math $macos_version - 12) -le 0
-    export HOMEBREW_NO_INSTALL_FROM_API=1
-    export HOMEBREW_NO_AUTO_UPDATE=1
+    set -gx HOMEBREW_NO_INSTALL_FROM_API 1
+    set -gx HOMEBREW_NO_AUTO_UPDATE 1
 end
+
 
 set -Ux https_proxy "http://127.0.0.1:7890"
 set -Ux http_proxy "http://127.0.0.1:7890"
