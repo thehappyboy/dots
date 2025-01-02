@@ -1,16 +1,7 @@
 set -Ux fish_user_paths
 fish_add_path /usr/local/sbin/
-fish_add_path ~/.cargo/bin/
 fish_add_path /usr/local/mysql/bin/
 
-# For compilers to find mysql-client you may need to set:
-#   set -gx LDFLAGS "-L/usr/local/mysql/lib"
-#   set -gx CPPFLAGS "-I/usr/local/mysql/include"
-# 
-# For pkg-config to find mysql-client you may need to set:
-#   set -gx PKG_CONFIG_PATH "/usr/local/mysql/lib/pkgconfig"
-
-# export DYLD_LIBRARY_PATH="/usr/local/mysql/lib:$PATH"
 
 set -Ux https_proxy "http://127.0.0.1:7890"
 set -Ux http_proxy "http://127.0.0.1:7890"
