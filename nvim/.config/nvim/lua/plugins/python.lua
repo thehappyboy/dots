@@ -1,19 +1,15 @@
 return {
-  {
-    'linux-cultist/venv-selector.nvim',
-    opts = {
-      settings = {
-        search = {
-          miniconda_envs = {
-            command = "$FD 'bin/python$' /usr/local/Caskroom/miniconda/base/envs --full-path --color never",
-            type = 'anaconda',
-          },
-          miniconda_base = {
-            command = "$FD '/python$' /usr/local/Caskroom/miniconda/base/bin --full-path --color never",
-            type = 'anaconda',
-          },
-        },
-      },
-    },
-  },
+  -- {
+  --   "linux-cultist/venv-selector.nvim",
+  --   dependencies = {
+  --     "neovim/nvim-lspconfig",
+  --     "nvim-telescope/telescope.nvim",
+  --     "mfussenegger/nvim-dap-python",
+  --   },
+  --   opts = {},
+  --   event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
+  --   keys = {
+  --     { "<leader>cv", "<cmd>VenvSelect<cr>" },
+  --   },
+  -- },
 }
