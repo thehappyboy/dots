@@ -9,3 +9,6 @@
 ::1             localhost
 127.0.0.1 api.adguard.org
 127.0.0.1 v3.paddleapi.com
+
+127.0.0.1 api.lemonsqueezy.com
+127.0.0.1 screen.studio
