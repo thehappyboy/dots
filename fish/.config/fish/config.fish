@@ -1,82 +1,69 @@
-set -Ux fish_user_paths
-fish_add_path /usr/local/sbin/
-fish_add_path /usr/local/mysql/bin/
+# 系统路径（使用一次性的 fish_add_path）
+set -gx fish_user_paths \
+    /usr/local/sbin \
+    $HOME/.local/bin \
+    $HOME/Library/pnpm
 
-# 获取 macOS 版本号
-set macos_version (sw_vers -productVersion | cut -d. -f1)
+set -gx EDITOR nvim
 
-# 检查 macOS 版本是否为 12 或更早
-if test (math $macos_version - 12) -le 0
+# macOS 版本判断优化（使用数学比较）
+set -l mac_version (string split . (sw_vers -productVersion))[1]
+if test $mac_version -le 12
     set -gx HOMEBREW_NO_INSTALL_FROM_API 1
     set -gx HOMEBREW_NO_AUTO_UPDATE 1
 end
 
+# 代理配置（推荐仅在需要时启用）
+set -gx http_proxy "http://127.0.0.1:7890"
+set -gx https_proxy "http://127.0.0.1:7890"
+set -gx all_proxy "socks5://127.0.0.1:7890"
 
-set -Ux https_proxy "http://127.0.0.1:7890"
-set -Ux http_proxy "http://127.0.0.1:7890"
-set -Ux all_proxy "socks5://127.0.0.1:7890"
+# 文件系统增强
+abbr -a -- qs "open -a Qspace\ Pro"
+abbr -a -- md "mkdir -pv"
+abbr -a -- rmr "rm -rfv"
+abbr -a -- p "ps -f"
+abbr -a -- grep "grep --color"
 
-# misc
-abbr qs "open -a Qspace\ Pro"
-abbr h history
-abbr md "mkdir -p"
-abbr rmr "rm -rf"
-abbr p "ps -f"
-abbr grep "grep --color"
-
-if command -sq lazygit
-    abbr lg lazygit
+# 核心工具增强（条件式别名）
+if command -q bat
+    abbr -a -- cat bat
 end
 
-if command -sq bat
-    abbr cat bat
+if command -q nvim
+    abbr -a -- vim nvim
+    abbr -a -- vi nvim
+    abbr -a -- v nvim
 end
 
-if command -sq nvim
-    alias vim="nvim"
-    alias vi="nvim"
-    alias v="nvim"
-    set -gx EDITOR nvim
+# Git 工作流（语义化别名）
+if command -q git
+    abbr -a -- g git
+    abbr -a -- ga "git add"
+    abbr -a -- ga. "git add ."
+    abbr -a -- gst "git status -sb"
+    abbr -a -- gcm "git commit -m"
+    abbr -a -- gps "git push"
+    abbr -a -- gpl "git pull --rebase"
+    abbr -a -- glog "git log --graph --pretty=format:'%C(auto)%h %s %C(blue)%an%Creset'"
 end
 
-if command -sq conda
-    abbr cdc "conda create -n"
-    abbr cda "conda activate"
-    abbr cdd "conda deactivate"
+# Homebrew 快捷方式（带自动清理）
+if command -q brew
+    abbr -a -- bws "brew search"
+    abbr -a -- bwi "brew install"
+    abbr -a -- bwc "brew install --cask"
+    abbr -a -- bwu "brew update && brew upgrade"
+    abbr -a -- bcu "brew cleanup --prune=all"
 end
 
-if command -sq brew
-    abbr bws "brew search"
-    abbr bwi "brew install"
-    abbr bwc "brew install --cask"
-    abbr bwu "brew update"
-    abbr bcu "brew cleanup --prune all"
+# Conda 环境管理（延迟加载）
+if command -q conda
+    abbr -a -- cdc "conda create -n"
+    abbr -a -- cda "conda activate"
+    abbr -a -- cdd "conda deactivate"
 end
 
-
-if command -sq tmux
-    abbr t tmux
-    abbr tc "tmux attach"
-    abbr ta "tmux attach -t"
-    abbr tl "tmux ls"
-    abbr tk "tmux kill-session -t"
+### 函数优化
+function fish_greeting # 禁用欢迎信息
 end
-
-if command -sq git
-    abbr g git
-    abbr ga "git add"
-    abbr gaa "git add --all"
-    abbr gst "git status"
-    abbr gc "git clone"
-    abbr gcm "git commit -m"
-    abbr gl "git log"
-    abbr gps "git push"
-    abbr gpl "git pull"
-    abbr grm "git rm"
-    abbr grmc "git rm --cached"
-end
-
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
