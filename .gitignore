@@ -1,0 +1,19 @@
+# macos generated
+.DS_Store
+.fseventsd
+.Spotlight-V100
+.Trashes
+
+.venv/
+
+# virtualfish-loader
+virtualfish-loader.fish
+
+# lazyvim
+lazy-lock.json
+
+# ssh
+ssh/
+
+clash/
+

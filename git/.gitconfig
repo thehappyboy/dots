@@ -1,0 +1,18 @@
+[user]
+	name = thehappyboy
+	email = 27151400@qq.com
+[init]
+	defaultBranch = main
+[http]
+	proxy = http://127.0.0.1:7890
+[https]
+	proxy = http://127.0.0.1:7890
+[core]
+	editor = nvim
+	autocrlf = input
+[diff]
+	tool = nvim
+[difftool "cursor"]
+	cmd = "code --wait --diff $LOCAL $REMOTE"
+[difftool "nvim"]
+	cmd = "nvim -d $LOCAL $REMOTE"

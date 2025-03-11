@@ -1,0 +1,29 @@
+{
+  "workbench.activityBar.orientation": "vertical",
+  "workbench.list.smoothScrolling": true,
+  "window.commandCenter": 1,
+  "editor.fontFamily": "'Hurmit Nerd Font Mono', 'LXGWNeoXiHei Nerd Font'",
+  "editor.fontSize": 13,
+  "editor.formatOnSave": true,
+  "editor.autoClosingBrackets": "always",
+  "editor.inlineSuggest.enabled": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "files.trimTrailingWhitespace": true,
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 20000,
+  "files.eol": "\n",
+  "prettier.semi": false,
+  "prettier.printWidth": 80,
+  "prettier.singleQuote": true,
+  "workbench.colorTheme": "GitHub Dark",
+  "workbench.iconTheme": "material-icon-theme",
+  "[python]": {
+    "editor.tabSize": 4,
+    "editor.defaultFormatter": "charliermarsh.ruff"
+  },
+  "[html]": {
+    "editor.tabSize": 4,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
+
