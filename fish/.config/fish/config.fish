@@ -42,7 +42,7 @@ if command -q git
     abbr -a -- g git
     abbr -a -- ga "git add"
     abbr -a -- ga. "git add ."
-    abbr -a -- gst "git status -sb"
+    abbr -a -- gst "git status -s"
     abbr -a -- gcm "git commit -m"
     abbr -a -- gps "git push"
     abbr -a -- gpl "git pull --rebase"
@@ -56,15 +56,4 @@ if command -q brew
     abbr -a -- bwc "brew install --cask"
     abbr -a -- bwu "brew update && brew upgrade"
     abbr -a -- bcu "brew cleanup --prune=all"
-end
-
-# Conda 环境管理（延迟加载）
-if command -q conda
-    abbr -a -- cdc "conda create -n"
-    abbr -a -- cda "conda activate"
-    abbr -a -- cdd "conda deactivate"
-end
-
-### 函数优化
-function fish_greeting # 禁用欢迎信息
 end
