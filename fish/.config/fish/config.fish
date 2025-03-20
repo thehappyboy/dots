@@ -57,3 +57,8 @@ if command -q brew
     abbr -a -- bwu "brew update && brew upgrade"
     abbr -a -- bcu "brew cleanup --prune=all"
 end
+
+# 安全加载本地密钥（最后一行添加）
+if test -e ~/.config/fish/secret_env.fish
+    source ~/.config/fish/secret_env.fish
+end

@@ -17,3 +17,6 @@ ssh/
 
 clash/
 
+*.fish.secret
+secret_*
+**/secret_*
