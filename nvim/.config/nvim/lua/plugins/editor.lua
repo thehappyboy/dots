@@ -7,4 +7,11 @@ return {
       require('better_escape').setup()
     end,
   },
+
+  {
+    'linux-cultist/venv-selector.nvim',
+    enabled = function()
+      return LazyVim.has('telescope.nvim') or LazyVim.has('fzf-lua')
+    end,
+  },
 }
