@@ -4,9 +4,9 @@
 [init]
 	defaultBranch = main
 [http]
-	proxy = http://127.0.0.1:7890
+	proxy = http://127.0.0.1:7897
 [https]
-	proxy = http://127.0.0.1:7890
+	proxy = http://127.0.0.1:7897
 [core]
 	editor = nvim
 	autocrlf = input

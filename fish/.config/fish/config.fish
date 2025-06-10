@@ -15,9 +15,9 @@ if test $mac_version -le 12
 end
 
 # 代理配置（推荐仅在需要时启用）
-set -gx http_proxy "http://127.0.0.1:7890"
-set -gx https_proxy "http://127.0.0.1:7890"
-set -gx all_proxy "http://127.0.0.1:7890"
+set -gx http_proxy "http://127.0.0.1:7897"
+set -gx https_proxy "http://127.0.0.1:7897"
+set -gx all_proxy "http://127.0.0.1:7897"
 
 # 文件系统增强
 abbr -a -- qs "open -a Qspace\ Pro"
