@@ -1,8 +1,14 @@
+local function has(plugin)
+  local plugins = require('lazy.core.config').spec.plugins
+  return plugins[plugin] ~= nil
+end
+
 return {
   {
     'linux-cultist/venv-selector.nvim',
     enabled = function()
-      return LazyVim.has('telescope.nvim') or LazyVim.has('fzf-lua')
+      -- cond = function()
+      return has('fzf-lua') or has('telescope.nvim')
     end,
   },
 
