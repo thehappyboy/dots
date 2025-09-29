@@ -6,8 +6,7 @@
 
 .venv/
 
-# virtualfish-loader
-virtualfish-loader.fish
+fish_variables
 
 # lazyvim
 lazy-lock.json

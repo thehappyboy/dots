@@ -5,7 +5,11 @@ set -gx EDITOR nvim
 set -gx fish_user_paths \
     /usr/local/sbin \
     $HOME/.local/bin \
-    $HOME/Library/pnpm
+    $PNPM_HOME
+
+# if not string match -q -- $PNPM_HOME $PATH
+#   set -gx PATH "$PNPM_HOME" $PATH
+# end
 
 # macOS 版本判断优化（使用数学比较）
 set -l mac_version (string split . (sw_vers -productVersion))[1]
@@ -15,9 +19,9 @@ if test $mac_version -le 12
 end
 
 # 代理配置（推荐仅在需要时启用）
-set -gx http_proxy "http://127.0.0.1:7897"
-set -gx https_proxy "http://127.0.0.1:7897"
-set -gx all_proxy "http://127.0.0.1:7897"
+set -gx http_proxy "http://127.0.0.1:6152"
+set -gx https_proxy "http://127.0.0.1:6152"
+set -gx all_proxy "http://127.0.0.1:6153"
 
 # 文件系统增强
 abbr -a -- qs "open -a Qspace\ Pro"
