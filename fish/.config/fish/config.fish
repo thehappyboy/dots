@@ -7,10 +7,6 @@ set -gx fish_user_paths \
     $HOME/.local/bin \
     $PNPM_HOME
 
-# if not string match -q -- $PNPM_HOME $PATH
-#   set -gx PATH "$PNPM_HOME" $PATH
-# end
-
 # macOS 版本判断优化（使用数学比较）
 set -l mac_version (string split . (sw_vers -productVersion))[1]
 if test $mac_version -le 12

@@ -1,292 +1,241 @@
 #!/usr/bin/env bash
 
-# Close any open System Preferences panes, to prevent them from overriding
-# settings we’re about to change
+# -----------------------------------------------------------------------------
+# settings.sh - macOS 个性化设置脚本
+#
+# 这个脚本会自动配置 macOS 的系统和应用设置，以提升用户体验，
+# 特别是对于开发者和高级用户。
+# -----------------------------------------------------------------------------
+
+# 在开始之前，退出所有打开的“系统偏好设置”面板，防止覆盖后续设置
 osascript -e 'tell application "System Preferences" to quit'
 
-# Ask for the administrator password upfront
+# 脚本开始时请求管理员权限
+echo "请输入您的密码以开始设置..."
 sudo -v
 
-# Keep-alive: update existing `sudo` time stamp until `.macos` has finished
+# 保持 sudo 会话，直到脚本执行完毕
 while true; do
-	sudo -n true
-	sleep 60
-	kill -0 "$$" || exit
+  sudo -n true
+  sleep 60
+  kill -0 "$$" || exit
 done 2>/dev/null &
 
+# -----------------------------------------------------------------------------
+# 安全性设置
+# -----------------------------------------------------------------------------
+
+# 警告：此命令会禁用 Gatekeeper，允许运行任何来源的应用。请谨慎使用。
 spctl --master-disable
+
+# 清除当前账户的所有密码策略
 pwpolicy -clearaccountpolicies
 
 ###############################################################################
-# General UI/UX                                                               #
+# 通用 UI/UX 设置                                                             #
 ###############################################################################
 
-# Set sidebar icon size to medium
+# 禁用文本输入时的自动填充建议
+defaults write -g NSAutoFillHeuristicControllerEnabled -bool false
+
+# 设置边栏图标大小为中等
 defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2
 
-# Always show scrollbars
+# 始终显示滚动条
+# 可选值: `WhenScrolling`, `Automatic`, `Always`
 defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
-# Possible values: `WhenScrolling`, `Automatic` and `Always`
 
-# Increase window resize speed for Cocoa applications
+# 加快 Cocoa 应用的窗口缩放速度
 defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
 
-# Expand save panel by default
+# 默认展开“存储”面板
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 
-# Expand print panel by default
+# 默认展开“打印”面板
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
 
-# Save to disk (not to iCloud) by default
+# 默认保存到本地磁盘，而不是 iCloud
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
-# Automatically quit printer app once the print jobs complete
+# 打印任务完成后自动退出打印机应用
 defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 
-# Disable the “Are you sure you want to open this application?” dialog
+# 禁用“您确定要打开此应用程序吗？”的警告对话框
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
-# Disable automatic termination of inactive apps
-# defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
-
-# Disable the crash reporter
+# 禁用崩溃报告程序
 defaults write com.apple.CrashReporter DialogType -string "none"
 
-# Set Help Viewer windows to non-floating mode
-defaults write com.apple.helpviewer DevMode -bool true
-
-# Fix for the ancient UTF-8 bug in QuickLook (https://mths.be/bbo)
-# Commented out, as this is known to cause problems in various Adobe apps :(
-# See https://github.com/mathiasbynens/dotfiles/issues/237
-#echo "0x08000100:0" > ~/.CFUserTextEncoding
-
-# Reveal IP address, hostname, OS version, etc. when clicking the clock
-# in the login window
+# 在登录窗口点击时钟时，显示 IP 地址、主机名、操作系统版本等信息
 sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
 
-# Disable automatic capitalization as it’s annoying when typing code
+# -----------------------------------------------------------------------------
+# 输入优化 (专为代码编写)
+# -----------------------------------------------------------------------------
+
+# 禁用自动大写
 defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
 
-# Disable smart dashes as they’re annoying when typing code
+# 禁用智能破折号
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 
-# Disable automatic period substitution as it’s annoying when typing code
+# 禁用自动句号
 defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
 
-# Disable smart quotes as they’re annoying when typing code
+# 禁用智能引号
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 
-# Disable auto-correct
+# 禁用自动拼写纠正
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
 ###############################################################################
-# Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
+# 触控板、鼠标、键盘等输入设备                                                #
 ###############################################################################
-# Use F1-F12 as standard function keys
+
+# 将 F1-F12 键用作标准功能键
 defaults write -globalDomain com.apple.keyboard.fnState -int 1
 
-# Trackpad: enable tap to click for this user and for the login screen
+# 触控板：为当前用户和登录屏幕启用“轻点来点按”
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
-# Trackpad: map bottom right corner to right-click
-# defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2
-# defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
-# defaults -currentHost write NSGlobalDomain com.apple.trackpad.trackpadCornerClickBehavior -int 1
-# defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true
-
-# Disable “natural” (Lion-style) scrolling
-# defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
-
-# Increase sound quality for Bluetooth headphones/headsets
-# defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
-
-# Enable full keyboard access for all controls
-# (e.g. enable Tab in modal dialogs)
-# defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
-
-# Use scroll gesture with the Ctrl (^) modifier key to zoom
-# defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
-# defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
-# Follow the keyboard focus while zoomed in
-# defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
-
-# Disable press-and-hold for keys in favor of key repeat
-# defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
-
-# Set a blazingly fast keyboard repeat rate
+# 设置一个极快的键盘重复速率
 defaults write NSGlobalDomain KeyRepeat -int 1
 defaults write NSGlobalDomain InitialKeyRepeat -int 15
 
-# Set language and text formats
-# Note: if you’re in the US, replace `EUR` with `USD`, `Centimeters` with
-# `Inches`, `en_GB` with `en_US`, and `true` with `false`.
-# defaults write NSGlobalDomain AppleLanguages -array "en" "nl"
-# defaults write NSGlobalDomain AppleLocale -string "en_GB@currency=EUR"
-# defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
-# defaults write NSGlobalDomain AppleMetricUnits -bool true
-
-# Show language menu in the top right corner of the boot screen
-# sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true
-
-# Set the timezone; see `sudo systemsetup -listtimezones` for other values
-# sudo systemsetup -settimezone "Europe/Brussels" > /dev/null
-
-# Stop iTunes from responding to the keyboard media keys
-#launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
-
 ###############################################################################
-# Screen                                                                      #
+# 屏幕设置                                                                    #
 ###############################################################################
 
-# Require password immediately after sleep or screen saver begins
+# 屏幕保护程序或睡眠后立即要求输入密码
 # defaults write com.apple.screensaver askForPassword -int 1
 # defaults write com.apple.screensaver askForPasswordDelay -int 0
 
-# Save screenshots to the desktop
+# 将屏幕截图保存到桌面
 defaults write com.apple.screencapture location -string "${HOME}/Desktop"
 
-# Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
+# 设置屏幕截图格式为 PNG (其他可选: BMP, GIF, JPG, PDF, TIFF)
 defaults write com.apple.screencapture type -string "png"
 
-# Disable shadow in screenshots
+# 禁用屏幕截图的阴影
 defaults write com.apple.screencapture disable-shadow -bool true
 
-# Enable subpixel font rendering on non-Apple LCDs
-# Reference: https://github.com/kevinSuttle/macOS-Defaults/issues/17#issuecomment-266633501
+# 在非 Apple LCD 上启用亚像素字体渲染
 # defaults write NSGlobalDomain AppleFontSmoothing -int 1
 
-# Enable HiDPI display modes (requires restart)
-# sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
-
 ###############################################################################
-# Finder                                                                      #
+# Finder (访达) 设置                                                          #
 ###############################################################################
 
-# Finder: allow quitting via ⌘ + Q; doing so will also hide desktop icons
+# 允许通过 ⌘ + Q 退出 Finder
 defaults write com.apple.finder QuitMenuItem -bool true
 
-# Finder: disable window animations and Get Info animations
+# 禁用 Finder 的窗口和“显示简介”动画
 defaults write com.apple.finder DisableAllAnimations -bool true
 
-# Set Desktop as the default location for new Finder windows
-# For other paths, use `PfLo` and `file:///full/path/here/`
+# 新建 Finder 窗口时默认打开桌面
+# PfDe = Desktop, PfDo = Documents, PfHm = Home
 defaults write com.apple.finder NewWindowTarget -string "PfDe"
 defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Desktop/"
 
-# Show icons for hard drives, servers, and removable media on the desktop
+# 在桌面上显示外置硬盘和可移除媒体的图标
 defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
 defaults write com.apple.finder ShowHardDrivesOnDesktop -bool false
 defaults write com.apple.finder ShowMountedServersOnDesktop -bool false
 defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
 
-# Finder: show hidden files by default
-#defaults write com.apple.finder AppleShowAllFiles -bool true
-
-# Finder: show all filename extensions
+# 显示所有文件扩展名
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
-# Finder: show status bar
+# 显示状态栏
 defaults write com.apple.finder ShowStatusBar -bool true
 
-# Finder: show path bar
+# 显示路径栏
 defaults write com.apple.finder ShowPathbar -bool true
 
-# Display full POSIX path as Finder window title
+# 在 Finder 窗口标题中显示完整的 POSIX 路径
 defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 
-# Keep folders on top when sorting by name
+# 按名称排序时，保持文件夹在顶部
 defaults write com.apple.finder _FXSortFoldersFirst -bool true
 
-# When performing a search, search the current folder by default
+# 搜索时，默认搜索当前文件夹
 defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 
-# Disable the warning when changing a file extension
+# 禁用更改文件扩展名时的警告
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
-# Enable spring loading for directories
-defaults write NSGlobalDomain com.apple.springing.enabled -bool true
-
-# Remove the spring loading delay for directories
-defaults write NSGlobalDomain com.apple.springing.delay -float 0
-
-# Avoid creating .DS_Store files on network or USB volumes
+# 避免在网络或 USB 卷上创建 .DS_Store 文件
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
-# Disable disk image verification
+# 禁用磁盘映像验证
 defaults write com.apple.frameworks.diskimages skip-verify -bool true
 defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
 defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
 
-# Automatically open a new Finder window when a volume is mounted
+# 挂载卷时自动打开新的 Finder 窗口
 defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool true
 defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool true
 defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
 
-# Show item info near icons on the desktop and in other icon views
-# /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
-# /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
-# /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
-
-# Show item info to the right of the icons on the desktop
-# /usr/libexec/PlistBuddy -c "Set DesktopViewSettings:IconViewSettings:labelOnBottom false" ~/Library/Preferences/com.apple.finder.plist
-
-# Use list view in all Finder windows by default
-# Four-letter codes for the other view modes: `icnv`, `clmv`, `glyv`
+# 默认使用列表视图 (Nlsv)
+# 其他视图模式: `icnv` (图标), `clmv` (分栏), `glyv` (画廊)
 defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 
-# Disable the warning before emptying the Trash
+# 禁用清空废纸篓前的警告
 defaults write com.apple.finder WarnOnEmptyTrash -bool false
 
-# Show the ~/Library folder
+# 显示 ~/Library 文件夹
 chflags nohidden ~/Library
 
-# Show the /Volumes folder
-# sudo chflags nohidden /Volumes
-
 ###############################################################################
-# Dock, Dashboard, and hot corners                                            #
+# Dock (程序坞) 设置                                                          #
 ###############################################################################
 
-# Enable highlight hover effect for the grid view of a stack (Dock)
-# defaults write com.apple.dock mouse-over-hilite-stack -bool true
-
-# Set the icon size of Dock items to 36 pixels
+# 设置 Dock 中图标的大小为 36 像素
 defaults write com.apple.dock tilesize -int 36
 
-# Wipe all (default) app icons from the Dock
-# This is only really useful when setting up a new Mac, or if you don’t use
-# the Dock to launch apps.
+# 清空 Dock 中所有默认的应用图标
 defaults write com.apple.dock persistent-apps -array
-defaults write com.apple.dock orientation -string left
 
-# Show only open applications in the Dock
-#defaults write com.apple.dock static-only -bool true
+# 【用户要求】将 Dock 放置在屏幕底部
+defaults write com.apple.dock orientation -string "bottom"
 
-# Don’t animate opening applications from the Dock
+# 禁用从 Dock 启动应用程序的动画
 defaults write com.apple.dock launchanim -bool false
 
-# Speed up Mission Control animations
+# 加快 Mission Control 的动画速度
 defaults write com.apple.dock expose-animation-duration -float 0.1
 
-# Automatically hide and show the Dock
-# defaults write com.apple.dock autohide -bool true
+# 【用户要求】自动隐藏和显示 Dock
+defaults write com.apple.dock autohide -bool true
 
-# Make Dock icons of hidden applications translucent
+# 使隐藏应用的图标在 Dock 中变为半透明
 defaults write com.apple.dock showhidden -bool true
 
-# Don’t show recent applications in Dock
+# 不在 Dock 中显示最近使用的应用
 defaults write com.apple.dock show-recents -bool false
 
 ###############################################################################
-# Photos                                                                      #
+# Photos (照片)                                                               #
 ###############################################################################
 
-# Prevent Photos from opening automatically when devices are plugged in
+# 插入设备时，防止“照片”应用自动打开
 defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 
-echo "Done. Note that some of these changes require a logout/restart to take effect."
+###############################################################################
+# 重启受影响的应用以使更改生效                                                #
+###############################################################################
+
+echo "正在应用设置..."
+
+for app in "Dock" "Finder" "SystemUIServer"; do
+  killall "${app}" >/dev/null 2>&1
+done
+
+echo "✅ 设置完成！"
+echo "请注意：部分更改可能需要您注销或重启电脑才能完全生效。"
