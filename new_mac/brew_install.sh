@@ -83,7 +83,8 @@ install_homebrew() {
 
 # --- 主函数 ---
 main() {
-  install_xcode_tools
+  ## nor nessessary, homebrew will check and install command_line_tools
+  # install_xcode_tools
   setup_proxy
   clone_dotfiles_repo
   install_homebrew
