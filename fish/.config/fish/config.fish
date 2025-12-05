@@ -3,9 +3,10 @@ set -gx EDITOR nvim
 
 # 系统路径（使用一次性的 fish_add_path）
 set -gx fish_user_paths \
-    /usr/local/sbin \
+    /opt/homebrew/bin \
     $HOME/.local/bin \
     $PNPM_HOME
+# fish_add_path /opt/homebrew/bin
 
 # macOS 版本判断优化（使用数学比较）
 set -l mac_version (string split . (sw_vers -productVersion))[1]
@@ -58,7 +59,6 @@ if command -q brew
     abbr -a -- bcu "brew cleanup --prune=all"
 end
 
-# 安全加载本地密钥（最后一行添加）
-if test -e ~/.config/fish/secret_env.fish
-    source ~/.config/fish/secret_env.fish
+if command -q starship
+    starship init fish | source
 end
