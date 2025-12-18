@@ -2,8 +2,9 @@ line-length = 88
 indent-width = 4
 
 [lint]
-extend-select = ["I"]
+#  “自动排序 import”功能
+select = ["I"]
 
 [format]
-quote-style="single"
-indent-style="space"
+quote-style = "single"
+indent-style = "space"

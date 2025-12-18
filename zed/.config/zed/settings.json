@@ -1,0 +1,240 @@
+{
+  // =========================
+  // 核心界面与行为 (Core UI & Behavior)
+  // =========================
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "One Dark",
+  },
+
+  "ui_font_family": "OperatorMonoSSmLig Nerd Font",
+  "ui_font_size": 15.0,
+  "buffer_font_family": "OperatorMonoSSmLig Nerd Font",
+  "buffer_font_size": 14.0,
+  "buffer_font_features": {
+    "calt": false, // 禁用连字 (Ligatures)
+  },
+  "restore_on_startup": "last_session",
+  "restore_on_file_reopen": true,
+  "autosave": "on_window_change",
+  "wrap_guides": [80],
+  "show_edit_predictions": false, // 全局不自动显示预测，使用 subtle 模式
+
+  "proxy": "http://127.0.0.1:6152",
+
+  // =========================
+  // 终端设置 (Terminal)
+  // =========================
+  "terminal": {
+    "font_family": "OperatorMonoSSmLig Nerd Font",
+    "font_size": 14.0,
+    "copy_on_select": true,
+    "env": {
+      "EDITOR": "zed --wait",
+    },
+  },
+
+  // =========================
+  // 编辑器增强 (Editor Enhancements)
+  // =========================
+  "multi_cursor_modifier": "alt",
+  "snippet_sort_order": "inline",
+  "show_completions_on_input": true,
+  "inlay_hints": {
+    "show_other_hints": false,
+    "show_parameter_hints": false,
+    "show_type_hints": false,
+    "show_value_hints": true,
+  },
+  "toolbar": {
+    "breadcrumbs": true,
+    "quick_actions": true,
+    "selections_menu": true,
+    "agent_review": true,
+    "code_actions": true,
+  },
+  "git": {
+    "inline_blame": {
+      "enabled": false,
+    },
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+  },
+
+  // =========================
+  // AI 与 助手 (AI & Assistant)
+  // =========================
+  "features": {
+    "edit_prediction_provider": "zed", // 使用 Zed 自己的预测模型 (Zeta)
+  },
+  "edit_predictions": {
+    "mode": "subtle", // 按住 Alt/Option 才显示预测，避免干扰
+    "enabled_in_text_threads": false,
+  },
+  "agent": {
+    "play_sound_when_agent_done": true,
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-sonnet-4-thinking",
+    },
+    "inline_assistant_model": {
+      "provider": "zed.dev",
+      "model": "claude-sonnet-4-5",
+    },
+  },
+  // 自定义模型配置 (Qwen)
+  "language_models": {
+    "openai_compatible": {
+      "Qwen": {
+        "api_url": "https://portal.qwen.ai/v1",
+        "available_models": [
+          {
+            "name": "qwen3-coder-plus",
+            "max_tokens": 65536,
+            "max_output_tokens": 65536,
+            "max_completion_tokens": 1000000,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+        ],
+      },
+    },
+  },
+
+  // =========================
+  // 格式化与 LSP (Formatting & LSP)
+  // =========================
+  "format_on_save": "on",
+  "formatter": "prettier",
+  "prettier": {
+    "semi": false,
+    "allowed": true,
+    "tabWidth": 2,
+    "bracketSpacing": true,
+    "jsxSingleQuote": true,
+    "singleQuote": true,
+  },
+  "lsp": {
+    "ruff": {
+      "initialization_options": {
+        "settings": {
+          // 保持为空，配合 ruff.toml 实现“仅格式化，无 Lint 报错”
+        },
+      },
+    },
+    "rust-analyzer": {
+      "initialization_options": {
+        "check": {
+          "command": "clippy",
+        },
+        "imports": {
+          "merge": { "glob": false },
+          "granularity": {
+            "enforce": true,
+            "group": "module",
+          },
+        },
+        "inlayHints": {
+          "maxLength": null,
+          "lifetimeElisionHints": {
+            "enable": "skip_trivial",
+            "useParameterNames": true,
+          },
+          "closureReturnTypeHints": {
+            "enable": "always",
+          },
+        },
+      },
+    },
+  },
+
+  // =========================
+  // 语言特定设置 (Language Specific)
+  // =========================
+  "languages": {
+    "Python": {
+      "format_on_save": "on",
+      "formatter": {
+        "language_server": {
+          "name": "ruff",
+        },
+      },
+      "debuggers": ["Debugpy"],
+    },
+    "Rust": {
+      "format_on_save": "on",
+      "formatter": {
+        "external": {
+          "command": "rustfmt",
+          "arguments": [],
+        },
+      },
+    },
+    "TypeScript": {
+      "formatter": "prettier",
+      "inlay_hints": {
+        "enabled": true,
+        "show_parameter_hints": false,
+        "show_other_hints": true,
+        "show_type_hints": true,
+      },
+    },
+    "JavaScript": {
+      "formatter": "prettier",
+    },
+    "JSONC": {
+      "formatter": "prettier",
+    },
+    "HTML": {
+      "formatter": "prettier",
+    },
+    "CSS": {
+      "formatter": "prettier",
+    },
+  },
+
+  // =========================
+  // 文件过滤 (Exclusions)
+  // =========================
+  "file_scan_exclusions": [
+    "**/.git",
+    "**/.svn",
+    "**/.hg",
+    "**/CVS",
+    "**/.DS_Store",
+    "**/Thumbs.db",
+    "**/.classpath",
+    "**/.settings",
+    "**/out",
+    "**/dist",
+    "**/.husky",
+    "**/.turbo",
+    "**/.vscode-test",
+    "**/.vscode",
+    "**/.next",
+    "**/.storybook",
+    "**/.tap",
+    "**/.nyc_output",
+    "**/report",
+    "**/node_modules",
+  ],
+  "file_types": {
+    "Dockerfile": ["Dockerfile", "Dockerfile.*"],
+    "JSONC": [
+      "**/.zed/**/*.json",
+      "**/zed/**/*.json",
+      "**/Zed/**/*.json",
+      "**/.vscode/**/*.json",
+      "tsconfig*.json",
+      "*.code-snippets",
+    ],
+    "Shell Script": [".env.*"],
+  },
+}

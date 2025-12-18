@@ -1,0 +1,30 @@
+{
+  "$schema": "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json",
+  "diagnostics": {
+    "globals": ["vim"],
+    "disable": ["undefined-global"]
+  },
+  "workspace": {
+    "library": [
+      "/usr/share/nvim/runtime",
+      "/usr/local/share/nvim/runtime",
+      "/opt/homebrew/share/nvim/runtime",
+      "~/.local/share/nvim/lazy",
+      "~/.local/share/nvim/site",
+      "/usr/share/nvim",
+      "/usr/local/share/nvim",
+      "/opt/homebrew/share/nvim",
+      "${3rd}/luv/library"
+    ],
+    "checkThirdParty": false,
+    "preloadFileSize": 1000
+  },
+  "runtime": {
+    "version": "LuaJIT",
+    "path": ["?.lua", "?/init.lua", "lua/?.lua", "lua/?/init.lua"]
+  },
+  "completion": {
+    "autoRequire": false,
+    "callSnippet": "Replace"
+  }
+}
