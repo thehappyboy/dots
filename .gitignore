@@ -4,6 +4,8 @@
 .Spotlight-V100
 .Trashes
 
+**/lock.mdb
+
 .venv/
 
 fish_variables

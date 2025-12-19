@@ -8,5 +8,6 @@ my dots file config:
 - bat
 - warp
 - cursor
-- tmux
+- tmuxa
 - ruff
+- zed
