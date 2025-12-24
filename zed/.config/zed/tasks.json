@@ -6,4 +6,23 @@
     "use_new_terminal": false,
     "allow_concurrent_runs": true,
   },
+  {
+    "label": "r/node",
+    "command": "node",
+    "args": ["$ZED_FILE"],
+    "use_new_terminal": false,
+    "allow_concurrent_runs": true,
+    "reveal": "always",
+  },
+  {
+    "label": "r/live-server",
+    "command": "sh",
+    "args": [
+      "-c",
+      "kill $(lsof -t -i:8080) 2>/dev/null || true; live-server --port=8080 --open=$ZED_FILE",
+    ],
+    "use_new_terminal": true,
+    "allow_concurrent_runs": true,
+    "reveal": "always",
+  },
 ]

@@ -2,7 +2,9 @@
   {
     "context": "Workspace",
     "bindings": {
-      "cmd-r": ["task::Spawn", { "task_name": "r/python" }],
+      "alt-P": ["task::Spawn", { "task_name": "r/python" }],
+      "alt-L": ["task::Spawn", { "task_name": "r/live-server" }],
+      "alt-N": ["task::Spawn", { "task_name": "r/node" }],
     },
   },
 ]
