@@ -1,31 +1,91 @@
 {
-  "Main entry point": {
+  "Import": {
+    "prefix": "im",
+    "description": "Import ",
+    "body": "import ${1:module}",
+  },
+  "Import from": {
+    "prefix": "fim",
+    "description": "Import from",
+    "body": "from ${1:module} import ${2:item}",
+  },
+  "Main": {
     "prefix": "ifmain",
     "description": "Main entry point template",
-    "body": ["if __name__ == '__main__':", "    main()", ""],
+    "body": "if __name__ == \"__main__\":\n    $0",
   },
-  "Create a function": {
+  "Function": {
     "prefix": "def",
-    "description": "Function template",
+    "description": "Function Template",
+    "body": ["def ${1:func}(${2:args}) -> ${3:None}:", "    ${4:pass}"],
+  },
+  "Class": {
+    "prefix": "class",
+    "description": "Class Template",
     "body": [
-      "def ${1:new_function}($2) -> ${3:None}:",
-      "    ${4:raise NotImplementedError('$1() was not implemented.')}",
+      "class ${1:classname}(${2:object}):",
+      "    def __init__(self, ${3:args}):",
+      "        $0",
     ],
+  },
+  "Method": {
+    "prefix": "method",
+    "description": "Method Template",
+    "body": ["def ${1:method}(self, ${2:args}):", "    $0"],
+  },
+  "For-loop": {
+    "prefix": "for",
+    "description": "For-loop Template",
+    "body": ["for ${1:item} in ${2:iterable}:", "    $0}"],
+  },
+  "While-loop": {
+    "prefix": "while",
+    "description": "While-loop Template",
+    "body": ["while ${1:condition}:", "    $0}"],
+  },
+  "If": {
+    "prefix": "if",
+    "description": "If Template",
+    "body": ["if ${1:condition}:", "    $0}"],
+  },
+  "If-else": {
+    "prefix": "ifelse",
+    "description": "Ifelse Template",
+    "body": ["if ${1:condition}:", "    ${2:pass)}", "else", "    $0}"],
+  },
+  "Elif": {
+    "prefix": "elif",
+    "description": "Elif Template",
+    "body": ["elif ${1:condition}:", "    $0}"],
+  },
+  "With": {
+    "prefix": "with",
+    "description": "With Template",
+    "body": ["with ${1:open('file')} as ${2:f}:", "    $0}"],
+  },
+  "Lamda": {
+    "prefix": "lamda",
+    "description": "Lamda functyion Template",
+    "body": "lambda ${1:x}: ${2:x + 1}",
+  },
+  "List comprehesion": {
+    "prefix": "lc",
+    "description": "List comprehesion Template",
+    "body": "[${1:x} for ${2:x} in ${3:xs}]",
   },
   "Quick debug": {
     "prefix": "debug",
     "description": "Quick debug",
     "body": ["print(f'${1:name} = {${2:var}}')", "$0"],
   },
-  "Quick try/except": {
+  "Try/except": {
     "prefix": "try",
-    "description": "Quick try/except block",
+    "description": "Try/except block",
     "body": [
       "try:",
-      "    ${1:...}",
-      "except Exception as e:",
-      "    print(f'{type(e).__name__}: {e}')",
-      "$0",
+      "    ${1:pass}",
+      "except ${2:Exception} as ${3:e}:",
+      "    $0",
     ],
   },
 }
