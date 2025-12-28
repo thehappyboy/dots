@@ -2,6 +2,7 @@
   // =========================
   // 核心界面与行为 (Core UI & Behavior)
   // =========================
+  "auto_update": false,
   "theme": {
     "mode": "system",
     "light": "One Light",
