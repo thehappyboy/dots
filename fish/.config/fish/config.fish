@@ -1,64 +1,76 @@
 set -gx PNPM_HOME $HOME/Library/pnpm
+set -gx BUN_INSTALL $HOME/.bun
 set -gx EDITOR nvim
 
-# 系统路径（使用一次性的 fish_add_path）
-set -gx fish_user_paths \
-    /opt/homebrew/bin \
-    $HOME/.local/bin \
-    $PNPM_HOME
-# fish_add_path /opt/homebrew/bin
+# 路径配置 (使用 fish_add_path 自动处理去重)
+fish_add_path /opt/homebrew/bin
+fish_add_path $HOME/.local/bin
+fish_add_path $PNPM_HOME
+fish_add_path $BUN_INSTALL/bin
 
-# macOS 版本判断优化（使用数学比较）
-set -l mac_version (string split . (sw_vers -productVersion))[1]
-if test $mac_version -le 12
-    set -gx HOMEBREW_NO_INSTALL_FROM_API 1
-    set -gx HOMEBREW_NO_AUTO_UPDATE 1
-end
-
-# 代理配置（推荐仅在需要时启用）
+# 代理配置 (默认开启)
 set -gx http_proxy "http://127.0.0.1:6152"
 set -gx https_proxy "http://127.0.0.1:6152"
 set -gx all_proxy "http://127.0.0.1:6153"
 
-# 文件系统增强
-abbr -a -- qs "open -a Qspace\ Pro"
-abbr -a -- md "mkdir -p"
-abbr -a -- rmr "rm -rf"
-abbr -a -- p "ps -f"
-abbr -a -- grep "grep --color"
+# 交互式会话配置
+if status is-interactive
+    # 导航快捷键
+    abbr -a -- ... "cd ../.."
+    abbr -a -- .... "cd ../../.."
+    abbr -a -- ..... "cd ../../../.."
 
-# 核心工具增强（条件式别名）
-if command -q bat
-    abbr -a -- cat bat
-end
+    # 文件系统操作
+    abbr -a -- md "mkdir -p"
+    abbr -a -- rmr "rm -rf"
+    abbr -a -- qs "open -a Qspace\ Pro"
 
-if command -q nvim
-    abbr -a -- vim nvim
-    abbr -a -- vi nvim
-    abbr -a -- v nvim
-end
+    # 工具增强
+    abbr -a -- p "ps -f"
+    abbr -a -- grep "grep --color=auto"
 
-# Git 工作流（语义化别名）
-if command -q git
-    abbr -a -- g git
-    abbr -a -- ga "git add"
-    abbr -a -- ga. "git add ."
-    abbr -a -- gst "git status -s"
-    abbr -a -- gcm "git commit -m"
-    abbr -a -- gps "git push"
-    abbr -a -- gpl "git pull --rebase"
-    abbr -a -- glog "git log --graph --pretty=format:'%C(auto)%h %s %C(blue)%an%Creset'"
-end
+    # 现代工具替换
+    if command -q bat
+        abbr -a -- cat bat
+    end
 
-# Homebrew 快捷方式（带自动清理）
-if command -q brew
-    abbr -a -- bws "brew search"
-    abbr -a -- bwi "brew install"
-    abbr -a -- bwc "brew install --cask"
-    abbr -a -- bwu "brew update && brew upgrade"
-    abbr -a -- bcu "brew cleanup --prune=all"
-end
+    if command -q nvim
+        abbr -a -- vim nvim
+        abbr -a -- vi nvim
+        abbr -a -- v nvim
+    end
 
-if command -q starship
-    starship init fish | source
+    # Git 缩写
+    if command -q git
+        abbr -a -- g git
+        abbr -a -- ga "git add"
+        abbr -a -- ga. "git add ."
+        abbr -a -- gst "git status -s"
+        abbr -a -- gcm "git commit -m"
+        abbr -a -- gps "git push"
+        abbr -a -- gpl "git pull --rebase"
+        abbr -a -- glog "git log --graph --pretty=format:'%C(auto)%h %s %C(blue)%an%Creset'"
+    end
+
+    # Homebrew 快捷方式
+    if command -q brew
+        abbr -a -- bws "brew search"
+        abbr -a -- bwi "brew install"
+        abbr -a -- bwc "brew install --cask"
+        abbr -a -- bwu "brew update && brew upgrade"
+        abbr -a -- bcu "brew cleanup --prune=all"
+    end
+
+    # Bun 快捷方式
+    if command -q bun
+        abbr -a -- b bun
+        abbr -a -- bi "bun install"
+        abbr -a -- ba "bun add"
+        abbr -a -- br "bun run"
+    end
+
+    # Starship Prompt
+    if command -q starship
+        starship init fish | source
+    end
 end
