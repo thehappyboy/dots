@@ -1,107 +1,122 @@
 #!/usr/bin/env bash
 
 # -----------------------------------------------------------------------------
-# brew_install.sh - 自动安装 Homebrew 及 Brewfile 中的依赖
+# brew_install.sh - Automated macOS Setup Script
 #
-# 该脚本会执行以下操作：
-# 1. 检查并安装 Apple Command Line Tools.
-# 2. 设置临时的代理（如有需要）.
-# 3. 从 GitHub 克隆配置文件仓库.
-# 4. 检查并安装 Homebrew.
-# 5. 使用 Brewfile 安装所有指定的软件包.
-# 6. 清理 Homebrew 缓存.
+# Handles:
+# 1. Proxy configuration
+# 2. Homebrew installation (automatically handles Xcode Command Line Tools)
+# 3. Dotfiles cloning/updating
+# 4. Bundle installation (Brewfile)
 # -----------------------------------------------------------------------------
 
-# 如果任何命令失败，则立即退出脚本
-set -e
+set -uo pipefail
 
-# --- 配置变量 ---
-# 将你的配置文件仓库地址和本地路径定义为变量，方便修改
+# --- Configuration ---
 DOTFILES_REPO="https://github.com/thehappyboy/dots.git"
 DOTFILES_DIR="${HOME}/dots"
+BREWFILE_PATH="${DOTFILES_DIR}/new_mac/Brewfile"
 
-# --- 辅助函数 ---
+# Proxy Settings
+PROXY_HTTP="http://127.0.0.1:6152"
+PROXY_SOCKS="socks5://127.0.0.1:6153"
 
-# 检查并安装 Xcode Command Line Tools
-install_xcode_tools() {
-  echo "--> 检查 Xcode Command Line Tools..."
-  if ! xcode-select -p &>/dev/null; then
-    echo "未找到 Command Line Tools，正在开始安装..."
-    echo "请在弹出的窗口中点击 '安装' 并等待安装完成，然后重新运行此脚本。"
-    xcode-select --install
-    # 等待用户完成安装
-    read -p "Command Line Tools 安装完成后，请按 Enter 键继续..."
-  else
-    echo "Command Line Tools 已安装。"
-  fi
+# --- Colors ---
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+# --- Helpers ---
+
+log_info() { echo -e "${BLUE}[INFO]${NC} $1"; }
+log_success() { echo -e "${GREEN}[SUCCESS]${NC} $1"; }
+log_warn() { echo -e "${YELLOW}[WARN]${NC} $1"; }
+log_error() { echo -e "${RED}[ERROR]${NC} $1"; }
+
+abort() {
+    log_error "$1"
+    exit 1
 }
 
-# 设置代理（仅对当前脚本会话有效）
 setup_proxy() {
-  echo "--> 正在为当前会话设置代理..."
-  # 注意：请确保你的代理服务正在 http://127.0.0.1:6152 (HTTP)
-  # 和 socks5://127.0.0.1:6153 (SOCKS5) 上运行
-  export https_proxy=http://127.0.0.1:6152
-  export http_proxy=http://127.0.0.1:6152
-  export all_proxy=socks5://127.0.0.1:6153
-  echo "代理已设置。"
+    log_info "Configuring proxy settings for this session..."
+    export http_proxy="$PROXY_HTTP"
+    export https_proxy="$PROXY_HTTP"
+    export all_proxy="$PROXY_SOCKS"
+    log_success "Proxy set: HTTP=$PROXY_HTTP"
 }
 
-# 克隆配置文件仓库
-clone_dotfiles_repo() {
-  echo "--> 准备克隆配置文件..."
-  if [ -d "$DOTFILES_DIR" ]; then
-    echo "配置文件目录 '$DOTFILES_DIR' 已存在，跳过克隆。"
-    echo "如需更新，请手动进入目录执行 'git pull'。"
-  else
-    echo "正在从 '$DOTFILES_REPO' 克隆到 '$DOTFILES_DIR'..."
-    git clone "$DOTFILES_REPO" "$DOTFILES_DIR"
-  fi
-}
-
-# 检查并安装 Homebrew
-install_homebrew() {
-  echo "--> 检查 Homebrew..."
-  if ! command -v brew &>/dev/null; then
-    echo "未找到 Homebrew，正在开始安装..."
-    # 使用非交互模式进行安装
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-    # 将 Homebrew 添加到当前 Shell 的 PATH 中，以便立即使用
-    # 兼容 Apple Silicon 和 Intel Mac
-    echo "--> 将 Homebrew 添加到当前会话的 PATH..."
-    if [[ -f "/opt/homebrew/bin/brew" ]]; then # Apple Silicon
-      eval "$(/opt/homebrew/bin/brew shellenv)"
-    elif [[ -f "/usr/local/bin/brew" ]]; then # Intel
-      eval "$(/usr/local/bin/brew shellenv)"
+clone_dotfiles() {
+    log_info "Checking dotfiles repository..."
+    if [ -d "$DOTFILES_DIR" ]; then
+        log_info "Directory '$DOTFILES_DIR' exists."
+        if [ -d "$DOTFILES_DIR/.git" ]; then
+            log_info "Pulling latest changes..."
+            git -C "$DOTFILES_DIR" pull || log_warn "Failed to pull updates."
+        else
+            log_warn "'$DOTFILES_DIR' exists but is not a git repository."
+        fi
+    else
+        log_info "Cloning '$DOTFILES_REPO' into '$DOTFILES_DIR'..."
+        git clone "$DOTFILES_REPO" "$DOTFILES_DIR" || abort "Failed to clone repository."
     fi
-    echo "Homebrew 安装并配置成功。"
-  else
-    echo "Homebrew 已安装。"
-  fi
 }
 
-# --- 主函数 ---
+install_homebrew() {
+    log_info "Checking Homebrew..."
+    if ! command -v brew &>/dev/null; then
+        log_info "Homebrew not found. Installing..."
+        # This script will automatically trigger Xcode Command Line Tools installation if missing
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || abort "Homebrew installation failed."
+
+        # Add to PATH for current session
+        if [[ -f "/opt/homebrew/bin/brew" ]]; then
+            eval "$(/opt/homebrew/bin/brew shellenv)"
+        elif [[ -f "/usr/local/bin/brew" ]]; then
+            eval "$(/usr/local/bin/brew shellenv)"
+        fi
+        log_success "Homebrew installed."
+    else
+        log_success "Homebrew is already installed."
+    fi
+
+    # Verify brew is working
+    brew --version &>/dev/null || abort "Homebrew is installed but not working correctly."
+}
+
+install_dependencies() {
+    if [ ! -f "$BREWFILE_PATH" ]; then
+        log_warn "Brewfile not found at '$BREWFILE_PATH'. Skipping bundle install."
+        return
+    fi
+
+    log_info "Installing dependencies from Brewfile..."
+    # --verbose provides better feedback during long installs
+    brew bundle --file "$BREWFILE_PATH" --verbose || log_warn "Some Brewfile items failed to install."
+}
+
+cleanup() {
+    log_info "Cleaning up Homebrew..."
+    brew cleanup --prune=all
+}
+
+# --- Main ---
+
 main() {
-  ## nor nessessary, homebrew will check and install command_line_tools
-  # install_xcode_tools
-  setup_proxy
-  clone_dotfiles_repo
-  install_homebrew
+    log_info "Starting new Mac setup script..."
 
-  BREWFILE_PATH="${DOTFILES_DIR}/new_mac/Brewfile"
-  if [ -f "$BREWFILE_PATH" ]; then
-    echo "--> 找到 Brewfile，正在安装依赖..."
-    brew bundle --file "$BREWFILE_PATH"
-  else
-    echo "--> 警告：在 '$BREWFILE_PATH' 未找到 Brewfile，跳过依赖安装。"
-  fi
+    setup_proxy
+    # Step 1: Install Homebrew (Handles Xcode Tools)
+    install_homebrew
+    # Step 2: Clone Dotfiles (Requires Git from Xcode Tools or System)
+    clone_dotfiles
+    # Step 3: Install Dependencies
+    install_dependencies
+    cleanup
 
-  echo "--> 正在清理 Homebrew 缓存..."
-  brew cleanup --prune=all
-
-  echo -e "\n✅ Homebrew 及相关依赖已全部处理完毕！"
+    log_success "Setup completed successfully!"
 }
 
-# --- 执行脚本 ---
-main
+main "$@"

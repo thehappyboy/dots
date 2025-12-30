@@ -9,6 +9,9 @@
     "dark": "One Dark",
   },
 
+  "relative_line_numbers": "enabled",
+  "vim_mode": true,
+
   "ui_font_family": "OperatorMonoSSmLig Nerd Font",
   "ui_font_size": 15.0,
   "buffer_font_family": "OperatorMonoSSmLig Nerd Font",
