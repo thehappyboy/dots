@@ -1,3 +1,3 @@
 function l
-  eza --color=always --icons --group-directories-first $argv;
+    eza --color=always --icons --group-directories-first $argv
 end
