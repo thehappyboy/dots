@@ -6,6 +6,7 @@
     "catppuccin": true,
     "catppuccin-icons": true,
     "html": true,
+    "emmet": true,
     "lua": true,
     "toml": true,
     "xml": true,
@@ -34,10 +35,11 @@
   // =========================
   // Font
   // =========================
-  "ui_font_family": "OperatorMonoSSmLig Nerd Font",
+  "ui_font_family": "BerkeleyMono Nerd Font",
   "ui_font_size": 14.0,
+  "ui_font_weight": 300.0,
   "buffer_line_height": { "custom": 1.5 },
-  "buffer_font_family": "OperatorMonoSSmLig Nerd Font",
+  "buffer_font_family": "BerkeleyMono Nerd Font",
   "buffer_font_size": 14.0,
   "buffer_font_weight": 300,
   "buffer_font_features": { "calt": false },
@@ -62,7 +64,7 @@
   "restore_on_startup": "last_session",
   "restore_on_file_reopen": true,
   "autosave": "on_window_change",
-  "wrap_guides": [80],
+  "wrap_guides": [90],
   "show_edit_predictions": false, // 全局不自动显示预测，使用 subtle 模式
   "current_line_highlight": "none",
   "tab_size": 4,
@@ -81,8 +83,8 @@
   // Terminal
   // =========================
   "terminal": {
-    "font_family": "OperatorMonoSSmLig Nerd Font",
-    "font_size": 14.0,
+    "font_family": "BerkeleyMono Nerd Font",
+    "font_size": 13.0,
     "line_height": "standard",
     "dock": "bottom",
     "copy_on_select": true,
@@ -97,6 +99,7 @@
   // =========================
   // UI
   // =========================
+  "colorize_brackets": true,
   "toolbar": {
     "breadcrumbs": false,
     "quick_actions": false,
@@ -120,6 +123,7 @@
   "snippet_sort_order": "inline",
   "show_completions_on_input": true,
   "inlay_hints": {
+    "enabled": true,
     "show_other_hints": false,
     "show_parameter_hints": false,
     "show_type_hints": false,
@@ -157,8 +161,8 @@
     "play_sound_when_agent_done": true,
     "default_profile": "write",
     "default_model": {
-      "provider": "zed.dev",
-      "model": "gemini-3-pro-preview",
+      "provider": "deepseek",
+      "model": "deepseek-reasoner",
     },
     "inline_assistant_model": {
       "provider": "zed.dev",
@@ -240,7 +244,7 @@
   // =========================
   "languages": {
     "Python": {
-      "language_servers": ["pyright", "ruff"],
+      "language_servers": ["!basedpyright", "ty", "ruff"],
       "formatter": [
         { "code_action": "source.organizeImports.ruff" },
         { "code_action": "source.fixAll.ruff" },
@@ -279,12 +283,19 @@
     },
     "JavaScript": {
       "formatter": "prettier",
+      "tab_size": 2,
     },
     "JSONC": {
       "formatter": "prettier",
+      "tab_size": 2,
+    },
+    "JSON": {
+      "formatter": "prettier",
+      "tab_size": 2,
     },
     "HTML": {
       "formatter": "prettier",
+      "tab_size": 2,
     },
     "CSS": {
       "formatter": "prettier",

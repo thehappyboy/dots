@@ -10,50 +10,62 @@
     },
   },
   {
-    "context": "vim_mode == insert || vim_mode == replace",
+    "context": "Editor && vim_mode == insert && !VimWaiting && !menu",
     "bindings": {
-      // Leave insert mode with jk
-      "j k": "vim::NormalBefore",
-    },
-  },
-  {
-    "context": "vim_mode == insert",
-    "bindings": {
-      // Prevent tab from accepting suggestion
-      "tab": "editor::Tab",
+      //     "j k": "vim::NormalBefore",
+      "ctrl-k": "editor::ShowSignatureHelp",
+      "ctrl-e": "editor::MoveToEndOfLine",
     },
   },
   {
     "context": "Editor && VimControl && !VimWaiting && !menu",
     "bindings": {
-      "H": "pane::ActivatePreviousItem",
-      "L": "pane::ActivateNextItem",
-      "K": "editor::Hover",
-      "g h": "editor::MoveToBeginningOfLine",
-      "g l": "editor::MoveToEndOfLine",
-      "g b": "pane::GoBack",
-      "g r": "editor::GoToTypeDefinition",
+      //lsp
+      "g K": "editor::ShowSignatureHelp",
+      "g y": "editor::GoToTypeDefinition",
       "g i": "editor::GoToImplementation",
+      "g d": "editor::GoToDefinition",
+      "g D": "editor::GoToDeclaration",
+      "g r": "editor::FindAllReferences",
+      "K": "editor::Hover",
+      // search
+      "space f o": "outline::Toggle",
+      "space f f": "file_finder::Toggle",
+      "space f p": "projects::OpenRecent",
+      // mover cursor between window
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      //code
+      "space c a": "editor::ToggleCodeActions",
       "space c f": "editor::Format",
       "space c r": "editor::Rename",
-      "space e": "project_panel::ToggleFocus",
-      "space f o": "outline::Toggle",
-      "space f p": "projects::OpenRecent",
-      "space f f": "file_finder::Toggle",
+      "]]": "editor::GoToNextReference",
+      "[[": "editor::GoToPreviousReference",
+      // git
       "space g [": "editor::GoToPreviousHunk",
       "space g ]": "editor::GoToHunk",
       "space g b": "git::Blame",
       "space g d": "editor::ToggleSelectedDiffHunks",
       "space g r": "git::Restore",
+      "space [ g": "editor::GoToPreviousHunk",
+      "space ] g": "editor::GoToHunk",
+      // error
+      "space ] e": "editor::GoToDiagnostic",
+      "space [ e": "editor::GoToPreviousDiagnostic",
+      // files
+      "space e": "project_panel::ToggleFocus",
+      // markdown
       "space m o": "markdown::OpenPreview",
       "space m p": "markdown::OpenPreviewToTheSide",
-      "space o": "tab_switcher::Toggle",
-      "space p d": "diagnostics::Deploy",
-      "space w c": "pane::CloseAllItems",
-      "space w k": "pane::SplitUp",
-      "space w j": "pane::SplitDown",
-      "space w h": "pane::SplitLeft",
-      "space w l": "pane::SplitRight",
+      // buffers
+      "[ b": "pane::ActivatePreviousItem",
+      "] b": "pane::ActivateNextItem",
+
+      "g h": "editor::MoveToBeginningOfLine",
+      "g l": "editor::MoveToEndOfLine",
+      "g b": "pane::GoBack",
     },
   },
   {
@@ -70,6 +82,7 @@
       "x": "project_panel::Cut",
       "y p": "workspace::CopyPath",
       "y r": "workspace::CopyRelativePath",
+      "space e": "project_panel::ToggleFocus",
     },
   },
   {
@@ -84,7 +97,7 @@
   {
     "context": "Terminal",
     "bindings": {
-      "cmd-t": "workspace::ToggleBottomDock",
+      "cmd-t": "terminal_panel::ToggleFocus",
     },
   },
 ]
