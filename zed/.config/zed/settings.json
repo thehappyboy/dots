@@ -169,28 +169,6 @@
       "model": "claude-sonnet-4-5",
     },
   },
-  // 自定义模型配置 (Qwen)
-  "language_models": {
-    "openai_compatible": {
-      "Qwen": {
-        "api_url": "https://portal.qwen.ai/v1",
-        "available_models": [
-          {
-            "name": "qwen3-coder-plus",
-            "max_tokens": 65536,
-            "max_output_tokens": 65536,
-            "max_completion_tokens": 1000000,
-            "capabilities": {
-              "tools": true,
-              "images": true,
-              "parallel_tool_calls": false,
-              "prompt_cache_key": false,
-            },
-          },
-        ],
-      },
-    },
-  },
 
   // =========================
   // Formatting & LSP
