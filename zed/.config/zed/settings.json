@@ -15,6 +15,9 @@
     "diagnostics": false,
     "metrics": false,
   },
+  "session": {
+    "trust_all_worktrees": true,
+  },
   "proxy": "http://127.0.0.1:6152",
 
   // =========================
@@ -258,6 +261,10 @@
         "show_other_hints": true,
         "show_type_hints": true,
       },
+    },
+    "YAML": {
+      "formatter": "prettier",
+      "tab_size": 2,
     },
     "JavaScript": {
       "formatter": "prettier",
