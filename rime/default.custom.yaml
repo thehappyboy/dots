@@ -1,0 +1,4 @@
+patch:
+  schema_list:
+    - schema: rime_mint # 薄荷拼音
+  'menu/page_size': 8
