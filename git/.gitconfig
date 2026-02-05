@@ -4,15 +4,15 @@
 [init]
 	defaultBranch = main
 [http]
-	proxy = http://127.0.0.1:6152
+	proxy = http://127.0.0.1:7897
 [https]
-	proxy = http://127.0.0.1:6152
+	proxy = http://127.0.0.1:7897
 [core]
 	editor = nvim
 	autocrlf = input
 [diff]
 	tool = nvim
-[difftool "cursor"]
-	cmd = "code --wait --diff $LOCAL $REMOTE"
+[difftool "zed"]
+	cmd = "zed --wait --diff $LOCAL $REMOTE"
 [difftool "nvim"]
 	cmd = "nvim -d $LOCAL $REMOTE"

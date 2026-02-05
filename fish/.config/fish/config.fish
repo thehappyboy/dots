@@ -9,9 +9,9 @@ fish_add_path $PNPM_HOME
 fish_add_path $BUN_INSTALL/bin
 
 # 代理配置 (默认开启)
-set -gx http_proxy "http://127.0.0.1:6152"
-set -gx https_proxy "http://127.0.0.1:6152"
-set -gx all_proxy "http://127.0.0.1:6153"
+set -gx http_proxy "http://127.0.0.1:7897"
+set -gx https_proxy "http://127.0.0.1:7897"
+set -gx all_proxy "http://127.0.0.1:7897"
 
 # 交互式会话配置
 if status is-interactive
@@ -44,7 +44,7 @@ if status is-interactive
     if command -q git
         abbr -a -- g git
         abbr -a -- ga "git add"
-        abbr -a -- ga. "git add ."
+        abbr -a -- gaa "git add ."
         abbr -a -- gst "git status -s"
         abbr -a -- gcm "git commit -m"
         abbr -a -- gps "git push"

@@ -18,7 +18,7 @@
   "session": {
     "trust_all_worktrees": true,
   },
-  "proxy": "http://127.0.0.1:6152",
+  "proxy": "http://127.0.0.1:7897",
 
   // =========================
   // theme
@@ -136,10 +136,8 @@
   // =========================
   // AI
   // =========================
-  "features": {
-    "edit_prediction_provider": "zed", // 使用 Zed 自己的预测模型 (Zeta)
-  },
   "edit_predictions": {
+    "provider": "zed",
     "mode": "subtle", // 按住 Alt/Option 才显示预测，避免干扰
     "enabled_in_text_threads": false,
   },
@@ -156,6 +154,12 @@
       "type": "custom",
       "command": "qwen",
       "args": ["--experimental-acp"],
+      "env": {},
+    },
+    "Kimi Code CLI": {
+      "type": "custom",
+      "command": "kimi",
+      "args": ["acp"],
       "env": {},
     },
   },
