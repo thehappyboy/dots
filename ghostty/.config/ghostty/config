@@ -1,0 +1,23 @@
+auto-update = check
+
+theme = Catppuccin Frappe
+
+
+font-family = BerkeleyMono Nerd Font
+font-feature = +calt
+# font-thicken = true
+font-size = 14
+
+macos-option-as-alt = left
+copy-on-select = clipboard
+mouse-hide-while-typing = true
+shell-integration-features = no-cursor
+cursor-style = block
+cursor-style-blink = true
+
+window-padding-x = 10
+window-padding-y = 10
+window-height = 60
+window-width = 120
+
+
