@@ -1,12 +1,14 @@
 set -gx PNPM_HOME $HOME/Library/pnpm
 set -gx BUN_INSTALL $HOME/.bun
 set -gx EDITOR nvim
+set -gx OBSIDIAN_CLI /Applications/Obsidian.app/Contents/MacOS
 
 # 路径配置 (使用 fish_add_path 自动处理去重)
 fish_add_path /opt/homebrew/bin
 fish_add_path $HOME/.local/bin
 fish_add_path $PNPM_HOME
 fish_add_path $BUN_INSTALL/bin
+fish_add_path $OBSIDIAN_CLI
 
 # 代理配置 (默认开启)
 set -gx http_proxy "http://127.0.0.1:6152"
@@ -78,3 +80,6 @@ end
 # Added by OrbStack: command-line tools and integration
 # This won't be added again if you remove it.
 source ~/.orbstack/shell/init2.fish 2>/dev/null || :
+
+# OpenClaw Completion
+source "/Users/hades/.openclaw/completions/openclaw.fish"
