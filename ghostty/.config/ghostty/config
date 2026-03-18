@@ -1,23 +1,40 @@
 auto-update = check
 
-theme = Catppuccin Frappe
+# -- 主题 --
+# theme = light:Catppuccin Latte,dark:Catppuccin Mocha
+theme = Catppuccin Mocha
 
-
-font-family = BerkeleyMono Nerd Font
-font-feature = +calt
-# font-thicken = true
+# -- 字体 --
+font-family = "BerkeleyMono Nerd Font"
 font-size = 14
+# font-thicken = true
+font-feature = +calt
+font-feature = +liga
 
-macos-option-as-alt = left
-copy-on-select = clipboard
-mouse-hide-while-typing = true
-shell-integration-features = no-cursor
-cursor-style = block
-cursor-style-blink = true
-
+# -- 窗口 --
+background-opacity = 0.9
+background-blur = 30
+# macos-titlebar-style = native
+macos-titlebar-style = transparent
+window-padding-balance = true
+window-save-state = always
+window-colorspace = display-p3
 window-padding-x = 10
 window-padding-y = 10
 window-height = 60
 window-width = 120
 
 
+# -- 光标 --
+cursor-style = block
+cursor-style-blink = true
+
+
+# -- 效率 --
+copy-on-select = clipboard
+mouse-hide-while-typing = true
+shell-integration-features = no-cursor
+
+
+
+macos-option-as-alt = left
