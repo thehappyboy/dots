@@ -21,6 +21,8 @@ BREWFILE_PATH="${DOTFILES_DIR}/new_mac/Brewfile"
 PROXY_HTTP="http://127.0.0.1:6152"
 PROXY_SOCKS="socks5://127.0.0.1:6153"
 
+# Homebrew mirror
+
 # --- Colors ---
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -48,6 +50,14 @@ setup_proxy() {
   log_success "Proxy set: HTTP=$PROXY_HTTP"
 }
 
+set_homebrew_mirror() {
+  log_info "Configuring homebrew mirrors"
+  export HOMEBREW_API_DOMAIN="https://mirrors.aliyun.com/homebrew-bottles/api"
+  export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.aliyun.com/homebrew/brew.git"
+  export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.aliyun.com/homebrew/homebrew-core.git"
+  export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.aliyun.com/homebrew/homebrew-bottles"
+}
+
 clone_dotfiles() {
   log_info "Checking dotfiles repository..."
   if [ -d "$DOTFILES_DIR" ]; then
@@ -69,7 +79,10 @@ install_homebrew() {
   if ! command -v brew &>/dev/null; then
     log_info "Homebrew not found. Installing..."
     # This script will automatically trigger Xcode Command Line Tools installation if missing
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || abort "Homebrew installation failed."
+    # /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || abort "Homebrew installation failed."
+    git clone https://mirrors.aliyun.com/homebrew/install.git brew-install
+    /bin/bash brew-install/install.sh
+    rm -rf brew-install
 
     # Add to PATH for current session
     if [[ -f "/opt/homebrew/bin/brew" ]]; then
@@ -109,6 +122,7 @@ main() {
 
   setup_proxy
   # Step 1: Install Homebrew (Handles Xcode Tools)
+  set_homebrew_mirror
   install_homebrew
   # Step 2: Clone Dotfiles (Requires Git from Xcode Tools or System)
   clone_dotfiles

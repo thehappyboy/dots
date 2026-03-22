@@ -15,6 +15,12 @@ set -gx http_proxy "http://127.0.0.1:6152"
 set -gx https_proxy "http://127.0.0.1:6152"
 set -gx all_proxy "socks5://127.0.0.1:6153"
 
+# Homebrew mirror
+set -gx HOMEBREW_API_DOMAIN "https://mirrors.aliyun.com/homebrew-bottles/api"
+set -gx HOMEBREW_BREW_GIT_REMOTE "https://mirrors.aliyun.com/homebrew/brew.git"
+set -gx HOMEBREW_CORE_GIT_REMOTE "https://mirrors.aliyun.com/homebrew/homebrew-core.git"
+set -gx HOMEBREW_BOTTLE_DOMAIN "https://mirrors.aliyun.com/homebrew/homebrew-bottles"
+
 # 交互式会话配置
 if status is-interactive
     # 导航快捷键
