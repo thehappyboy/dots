@@ -8,6 +8,3 @@ if (( macos_version <= 12 )); then
 fi
 
 
-
-# Added by Obsidian
-export PATH="$PATH:/Applications/Obsidian.app/Contents/MacOS"

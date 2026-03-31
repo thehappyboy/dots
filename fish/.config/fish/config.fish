@@ -5,6 +5,7 @@ set -gx OBSIDIAN_CLI /Applications/Obsidian.app/Contents/MacOS
 
 # 路径配置 (使用 fish_add_path 自动处理去重)
 fish_add_path /opt/homebrew/bin
+fish_add_path /opt/homebrew/opt/sqlite/bin
 fish_add_path $HOME/.local/bin
 fish_add_path $PNPM_HOME
 fish_add_path $BUN_INSTALL/bin
@@ -15,11 +16,14 @@ set -gx http_proxy "http://127.0.0.1:6152"
 set -gx https_proxy "http://127.0.0.1:6152"
 set -gx all_proxy "socks5://127.0.0.1:6153"
 
-# Homebrew mirror
+# # Homebrew mirror
 set -gx HOMEBREW_API_DOMAIN "https://mirrors.aliyun.com/homebrew-bottles/api"
 set -gx HOMEBREW_BREW_GIT_REMOTE "https://mirrors.aliyun.com/homebrew/brew.git"
 set -gx HOMEBREW_CORE_GIT_REMOTE "https://mirrors.aliyun.com/homebrew/homebrew-core.git"
 set -gx HOMEBREW_BOTTLE_DOMAIN "https://mirrors.aliyun.com/homebrew/homebrew-bottles"
+
+# HuggingFace mirror
+set -gx HF_ENDPOINT https://hf-mirror.com
 
 # 交互式会话配置
 if status is-interactive
@@ -89,3 +93,6 @@ source ~/.orbstack/shell/init2.fish 2>/dev/null || :
 
 # OpenClaw Completion
 source "/Users/hades/.openclaw/completions/openclaw.fish"
+
+# QMD 别名（隔离 XDG 目录）
+# alias qmd 'env XDG_CONFIG_HOME=$HOME/.cache/qmd/xdg-config XDG_CACHE_HOME=$HOME/.cache/qmd/xdg-cache command qmd $argv'
