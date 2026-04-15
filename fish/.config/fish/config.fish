@@ -13,9 +13,11 @@ fish_add_path $BUN_INSTALL/bin
 fish_add_path $OBSIDIAN_CLI
 
 # 代理配置 (默认开启)
-set -gx http_proxy "http://127.0.0.1:6152"
-set -gx https_proxy "http://127.0.0.1:6152"
-set -gx all_proxy "socks5://127.0.0.1:6153"
+# set -gx http_proxy "http://127.0.0.1:6152"
+# set -gx https_proxy "http://127.0.0.1:6152"
+# set -gx all_proxy "socks5://127.0.0.1:6153"
+set -gx http_proxy "http://127.0.0.1:7897"
+set -gx https_proxy "http://127.0.0.1:7897"
 
 # HuggingFace mirror
 set -gx HF_ENDPOINT https://hf-mirror.com

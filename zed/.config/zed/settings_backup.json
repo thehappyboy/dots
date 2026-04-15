@@ -48,7 +48,7 @@
   "buffer_font_weight": 300,
   "buffer_font_features": { "calt": false },
   "buffer_line_height": { "custom": 1.5 },
-  "minimap": { "show": "never" },
+  "minimap": { "enabled": false },
 
   // =========================
   // 编辑器核心设置
@@ -83,32 +83,23 @@
   // =========================
   // Git
   // =========================
+  "git_gutter": "auto",
   "git": {
     "inline_blame": { "enabled": false },
-    "git_gutter": "tracked_files",
   },
 
   // =========================
   // Vim
   // =========================
   "vim_mode": true,
-  "vim": {
-    "default_mode": "normal",
-    "toggle_relative_line_numbers": false,
-    "use_system_clipboard": "always",
-    "use_smartcase_find": false,
-    "gdefault": false,
-    "highlight_on_yank_duration": 200,
-    "custom_digraphs": {},
-    "cursor_shape": {
-      "normal": "block",
-      "replace": "underline",
-      "visual": "block",
-      "insert": "bar",
-    },
+  "cursor_blink": false,
+  "cursor_shape": {
+    "normal": "block",
+    "insert": "bar",
+    "replace": "underline",
   },
   "relative_line_numbers": "enabled",
-  "scrollbar": { "show": "never" },
+  "scrollbar": "never",
 
   // =========================
   // Terminal
@@ -139,12 +130,10 @@
     "code_actions": true,
   },
   "tabs": {
-    "git_status": true,
-    "close_position": "right",
     "file_icons": true,
-    "show_close_button": "hover",
-    "activate_on_close": "history",
+    "git_status": true,
     "show_diagnostics": "all",
+    "show_close_button": "on_hover",
   },
   "project_panel": {
     "entry_spacing": "standard",
@@ -198,16 +187,16 @@
     },
   },
   "agent": {
-    "inline_assistant_use_streaming_tools": true,
-    "enabled": true,
-    "button": true,
-    "dock": "right",
-    "flexible": true,
-    "sidebar_side": "left",
+    "always_allow_tool_actions": true,
+    "play_sound_when_agent_done": true,
+    "default_profile": "write",
     "default_model": {
+      "provider": "deepseek",
+      "model": "deepseek-reasoner",
+    },
+    "inline_assistant_model": {
       "provider": "zed.dev",
-      "model": "claude-sonnet-4",
-      "enable_thinking": false,
+      "model": "claude-sonnet-4-5",
     },
   },
 
@@ -215,6 +204,7 @@
   // 格式化 & LSP
   // =========================
   "format_on_save": "on",
+  "formatter": "auto",
   "lsp": {
     "ruff": {
       "initialization_options": {
@@ -258,6 +248,14 @@
         { "code_action": "source.fixAll.ruff" },
         { "language_server": { "name": "ruff" } },
       ],
+    },
+    "Lua": {
+      "formatter": {
+        "external": {
+          "command": "stylua",
+          "arguments": ["--stdin-filepath", "{buffer_path}", "-"],
+        },
+      },
     },
     "Rust": {
       "format_on_save": "on",
