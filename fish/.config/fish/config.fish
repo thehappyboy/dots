@@ -13,9 +13,6 @@ fish_add_path $BUN_INSTALL/bin
 fish_add_path $OBSIDIAN_CLI
 
 # 代理配置 (默认开启)
-# set -gx http_proxy "http://127.0.0.1:6152"
-# set -gx https_proxy "http://127.0.0.1:6152"
-# set -gx all_proxy "socks5://127.0.0.1:6153"
 set -gx http_proxy "http://127.0.0.1:7897"
 set -gx https_proxy "http://127.0.0.1:7897"
 
@@ -90,6 +87,3 @@ source ~/.orbstack/shell/init2.fish 2>/dev/null || :
 
 # OpenClaw Completion
 source "/Users/hades/.openclaw/completions/openclaw.fish"
-
-# QMD 别名（隔离 XDG 目录）
-# alias qmd 'env XDG_CONFIG_HOME=$HOME/.cache/qmd/xdg-config XDG_CACHE_HOME=$HOME/.cache/qmd/xdg-cache command qmd $argv'
