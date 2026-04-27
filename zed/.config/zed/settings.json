@@ -73,7 +73,7 @@
   "autosave": "on_window_change",
   "ensure_final_newline_on_save": true,
   "remove_trailing_whitespace_on_save": false,
-  "preferred_line_length": 90,
+  "preferred_line_length": 100,
   "soft_wrap": "preferred_line_length",
   "current_line_highlight": "none",
   "tab_size": 4,
@@ -329,14 +329,7 @@
   ],
   "file_types": {
     "Dockerfile": ["Dockerfile", "Dockerfile.*"],
-    "JSONC": [
-      "**/.zed/**/*.json",
-      "**/zed/**/*.json",
-      "**/Zed/**/*.json",
-      "**/.vscode/**/*.json",
-      "tsconfig*.json",
-      "*.code-snippets",
-    ],
+    "JSONC": ["**/.zed/**/*.json", "**/zed/**/*.json", "**/Zed/**/*.json", "**/.vscode/**/*.json", "tsconfig*.json", "*.code-snippets"],
     "Shell Script": [".env.*"],
   },
 }

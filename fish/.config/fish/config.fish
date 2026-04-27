@@ -19,6 +19,10 @@ set -gx https_proxy "http://127.0.0.1:7897"
 # HuggingFace mirror
 set -gx HF_ENDPOINT https://hf-mirror.com
 
+# Use Qwen3-Embedding-0.6B for better multilingual (CJK) support
+set -gx QMD_EMBED_MODEL "hf:Qwen/Qwen3-Embedding-0.6B-GGUF/Qwen3-Embedding-0.6B-Q8_0.gguf"
+# set -gx QMD_RERANK_MODEL "hf:gpustack/bge-reranker-v2-m3-GGUF/bge-reranker-v2-m3-Q8_0.gguf"
+
 # 交互式会话配置
 if status is-interactive
     # 导航快捷键
