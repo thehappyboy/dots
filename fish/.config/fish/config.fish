@@ -91,3 +91,11 @@ source ~/.orbstack/shell/init2.fish 2>/dev/null || :
 
 # OpenClaw Completion
 source "/Users/hades/.openclaw/completions/openclaw.fish"
+
+# 代理配置
+set -gx http_proxy http://192.168.139.3:7897
+set -gx https_proxy http://192.168.139.3:7897
+set -gx HTTP_PROXY http://192.168.139.3:7897
+set -gx HTTPS_PROXY http://192.168.139.3:7897
+set -gx no_proxy localhost,127.0.0.1,::1
+set -gx NO_PROXY localhost,127.0.0.1,::1

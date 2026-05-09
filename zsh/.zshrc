@@ -1,1 +1,7 @@
-export PATH="$HOME/.local/share/uv/tools/huggingface-hub/bin:$PATH"
+# 代理配置
+export http_proxy=http://192.168.139.3:7897
+export https_proxy=http://192.168.139.3:7897
+export no_proxy=localhost,127.0.0.1,::1
+
+# OpenClaw Completion
+source "/Users/hades/.openclaw/completions/openclaw.zsh"
