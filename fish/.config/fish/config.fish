@@ -3,6 +3,9 @@ set -gx BUN_INSTALL $HOME/.bun
 set -gx EDITOR nvim
 set -gx OBSIDIAN_CLI /Applications/Obsidian.app/Contents/MacOS
 
+# 清除 fish 启动问候语
+set fish_greeting
+
 # 路径配置 (使用 fish_add_path 自动处理去重)
 fish_add_path /opt/homebrew/bin
 fish_add_path /opt/homebrew/opt/openjdk/bin
@@ -12,9 +15,13 @@ fish_add_path $PNPM_HOME
 fish_add_path $BUN_INSTALL/bin
 fish_add_path $OBSIDIAN_CLI
 
-# 代理配置 (默认开启)
-set -gx http_proxy "http://127.0.0.1:7897"
-set -gx https_proxy "http://127.0.0.1:7897"
+# 代理配置（统一 127.0.0.1，容器 host 网络模式可用）
+set -gx http_proxy http://127.0.0.1:7897
+set -gx https_proxy http://127.0.0.1:7897
+set -gx HTTP_PROXY http://127.0.0.1:7897
+set -gx HTTPS_PROXY http://127.0.0.1:7897
+set -gx no_proxy localhost,127.0.0.1,::1
+set -gx NO_PROXY localhost,127.0.0.1,::1
 
 # HuggingFace mirror
 set -gx HF_ENDPOINT https://hf-mirror.com
@@ -85,17 +92,8 @@ if status is-interactive
     end
 end
 
-# Added by OrbStack: command-line tools and integration
-# This won't be added again if you remove it.
+# OrbStack 集成
 source ~/.orbstack/shell/init2.fish 2>/dev/null || :
 
 # OpenClaw Completion
 source "/Users/hades/.openclaw/completions/openclaw.fish"
-
-# 代理配置
-set -gx http_proxy http://192.168.139.3:7897
-set -gx https_proxy http://192.168.139.3:7897
-set -gx HTTP_PROXY http://192.168.139.3:7897
-set -gx HTTPS_PROXY http://192.168.139.3:7897
-set -gx no_proxy localhost,127.0.0.1,::1
-set -gx NO_PROXY localhost,127.0.0.1,::1

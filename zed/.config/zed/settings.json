@@ -67,15 +67,15 @@
   "hide_mouse": "on_typing_and_movement",
   "inline_code_actions": false,
   "middle_click_paste": false,
-  "vertical_scroll_margin": 0,
+  "vertical_scroll_margin": 5,
   "restore_on_startup": "last_session",
   "restore_on_file_reopen": true,
   "autosave": "on_window_change",
   "ensure_final_newline_on_save": true,
-  "remove_trailing_whitespace_on_save": false,
+  "remove_trailing_whitespace_on_save": true,
   "preferred_line_length": 100,
   "soft_wrap": "preferred_line_length",
-  "current_line_highlight": "none",
+  "current_line_highlight": "gutter",
   "tab_size": 4,
   "hard_tabs": false,
   "use_autoclose": true,
@@ -108,7 +108,7 @@
     },
   },
   "relative_line_numbers": "enabled",
-  "scrollbar": { "show": "never" },
+  "scrollbar": { "show": "auto" },
 
   // =========================
   // Terminal
@@ -148,6 +148,10 @@
   },
   "project_panel": {
     "entry_spacing": "standard",
+    "dock": "left",
+  },
+  "outline_panel": {
+    "dock": "left",
   },
   "status_bar": {
     "active_language_button": true,
@@ -196,6 +200,9 @@
       "args": ["acp"],
       "env": {},
     },
+  },
+  "git_panel": {
+    "dock": "left",
   },
   "agent": {
     "inline_assistant_use_streaming_tools": true,

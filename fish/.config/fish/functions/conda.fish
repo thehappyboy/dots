@@ -1,4 +1,4 @@
-function conda
+function conda --wraps=conda
     functions -e conda
     eval command conda "shell.fish" hook | source
 
