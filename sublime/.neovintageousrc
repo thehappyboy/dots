@@ -1,0 +1,19 @@
+" 类 LazyVim / mini.surround 键位
+" gs 前缀替代默认的 ys/ds/cs
+
+" 添加 surround: gsa → ys
+nnoremap gsa ys
+onoremap gsa ys
+
+" 删除 surround: gsd → ds
+nnoremap gsd ds
+onoremap gsd ds
+xnoremap gsd ds
+
+" 修改 surround: gsr → cs
+nnoremap gsr cs
+onoremap gsr cs
+xnoremap gsr cs
+
+" 可视模式添加 surround: gsa → S
+xnoremap gsa S

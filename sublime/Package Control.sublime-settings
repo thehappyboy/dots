@@ -1,0 +1,28 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"A File Icon",
+		"Catppuccin color schemes",
+		"FileIcons",
+		"LiveReload",
+		"LiveServerPlus",
+		"LSP",
+		"LSP-css",
+		"LSP-html",
+		"LSP-json",
+		"LSP-ruff",
+		"LSP-ty",
+		"LSP-typescript",
+		"LSP-yaml",
+		"MarkdownEditing",
+		"MarkdownPreview",
+		"NeoVintageous",
+		"NeoVintageousFiles",
+		"Package Control",
+		"Prettierd Format",
+	],
+}
