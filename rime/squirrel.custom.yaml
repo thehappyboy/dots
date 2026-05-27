@@ -1,5 +1,5 @@
 patch:
-  'style/candidate_list_layout': linear # stacked | linear | tabled
+  "style/candidate_list_layout": linear # stacked | linear | tabled
   show_notifications_when: appropriate # options: always | never | appropriate
   app_options:
     dev.zed.Zed:
@@ -7,6 +7,8 @@ patch:
       no_inline: true # 不使用行內編輯
       vim_mode: true # 退出VIM插入模式自動切換輸入法狀態
     com.microsoft.VSCode:
+      ascii_mode: true
+    com.neovide.neovide:
       ascii_mode: true
     com.raycast.macos:
       ascii_mode: true

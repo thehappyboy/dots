@@ -1,7 +1,0 @@
-{
-    // 关掉 Cmd 键拦截，让 Sublime 原生快捷键优先
-    "vintageous_use_super_keys": false,
-
-    // 但放行 Ctrl+W 系列的窗口操作（Vim 习惯）
-    "vintageous_use_ctrl_keys": true
-}

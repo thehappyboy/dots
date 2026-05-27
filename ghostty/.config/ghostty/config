@@ -14,7 +14,7 @@ font-feature = +liga
 # -- 窗口 --
 background-opacity = 0.9
 background-blur = 30
-# macos-titlebar-style = native
+# macon-titlebar-style = native
 macos-titlebar-style = transparent
 window-padding-balance = true
 window-save-state = always

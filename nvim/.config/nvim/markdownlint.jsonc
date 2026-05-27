@@ -1,14 +1,14 @@
 {
   "$schema": "https://raw.githubusercontent.com/DavidAnson/markdownlint/main/schema/markdownlint-config-schema.json",
-
-  "MD007": false,  // Unordered list indentation
-  "MD013": false,  // Line length
-  "MD022": false,  // Blanks around headings
-  "MD024": false,  // Duplicate heading
-  "MD031": false,  // Blanks around fenced code blocks
-  "MD032": false,  // Blanks around lists
-  "MD033": false,  // Inline HTML
-  "MD040": false,  // Fenced code language
-  "MD041": false,  // First line heading
-  "MD046": false   // Code block style
+  "MD007": false, // Unordered list indentation
+  "MD012": false, // Line length
+  "MD013": false, // Line length
+  "MD022": false, // Blanks around headings
+  "MD024": false, // Duplicate heading
+  "MD031": false, // Blanks around fenced code blocks
+  "MD032": false, // Blanks around lists
+  "MD033": false, // Inline HTML
+  "MD040": false, // Fenced code language
+  "MD041": false, // First line heading
+  "MD046": false // Code block style
 }

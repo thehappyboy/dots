@@ -90,6 +90,10 @@ if status is-interactive
     if command -q starship
         starship init fish | source
     end
+
+    if command -q peekaboo
+        peekaboo completions fish | source
+    end
 end
 
 # OrbStack 集成
