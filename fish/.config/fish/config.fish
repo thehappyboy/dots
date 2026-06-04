@@ -86,6 +86,11 @@ if status is-interactive
         abbr -a -- br "bun run"
     end
 
+    # lazygit 快捷方式
+    if command -q lazygit
+        abbr -a -- lg lazygit
+    end
+
     # Starship Prompt
     if command -q starship
         starship init fish | source
