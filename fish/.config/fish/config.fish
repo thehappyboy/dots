@@ -6,14 +6,14 @@ set -gx OBSIDIAN_CLI /Applications/Obsidian.app/Contents/MacOS
 # 清除 fish 启动问候语
 set fish_greeting
 
-# 路径配置 (使用 fish_add_path 自动处理去重)
-fish_add_path /opt/homebrew/bin
-fish_add_path /opt/homebrew/opt/openjdk/bin
-fish_add_path /opt/homebrew/opt/sqlite/bin
-fish_add_path $HOME/.local/bin
-fish_add_path $PNPM_HOME
-fish_add_path $BUN_INSTALL/bin
-fish_add_path $OBSIDIAN_CLI
+# 路径配置 (使用 fish_add_path --global 避免污染 universal fish_user_paths)
+fish_add_path --global /opt/homebrew/bin
+fish_add_path --global /opt/homebrew/opt/openjdk/bin
+fish_add_path --global /opt/homebrew/opt/sqlite/bin
+fish_add_path --global $HOME/.local/bin
+fish_add_path --global $PNPM_HOME
+fish_add_path --global $BUN_INSTALL/bin
+fish_add_path --global $OBSIDIAN_CLI
 
 # 代理配置（统一 127.0.0.1，容器 host 网络模式可用）
 set -gx http_proxy http://127.0.0.1:7897
@@ -99,10 +99,10 @@ if status is-interactive
     if command -q peekaboo
         peekaboo completions fish | source
     end
+
+    # OpenClaw Completion
+    source "/Users/hades/.openclaw/completions/openclaw.fish" 2>/dev/null || :
 end
 
 # OrbStack 集成
 source ~/.orbstack/shell/init2.fish 2>/dev/null || :
-
-# OpenClaw Completion
-source "/Users/hades/.openclaw/completions/openclaw.fish"
