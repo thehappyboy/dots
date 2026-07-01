@@ -1,54 +1,93 @@
-tap "oven-sh/bun"
-tap "steipete/tap"
+tap "oven-sh/bun", trusted: true
+# Code searching, linting, rewriting
 brew "ast-grep"
+# Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# DuckDuckGo from the terminal
 brew "ddgr"
+# More intuitive version of du in rust
 brew "dust"
+# Modern, maintained replacement for ls
 brew "eza"
+# Like neofetch, but much faster because written mostly in C
 brew "fastfetch"
+# Simple, fast and user-friendly alternative to find
 brew "fd"
+# Play, record, convert, and stream select audio and video codecs
 brew "ffmpeg"
+# User-friendly command-line shell for UNIX-like operating systems
 brew "fish"
+# Command-line fuzzy finder written in Go
 brew "fzf"
+# GitHub command-line tool
 brew "gh"
+# Framework for layout and rendering of i18n text
 brew "pango"
+# Interpreter for PostScript and PDF
 brew "ghostscript"
+# Distributed revision control system
 brew "git"
+# Syntax-highlighting pager for git and diff output
 brew "git-delta"
+# Lightweight and flexible command-line JSON processor
 brew "jq"
+# Simple terminal UI for git commands
 brew "lazygit"
+# Simple tool to make locally trusted development certificates
+brew "mkcert"
+# Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
+# Command-line interface for SQLite
 brew "sqlite"
+# Open-source, cross-platform JavaScript runtime environment
 brew "node"
+# PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
+# Code formatter for JavaScript, CSS, JSON, GraphQL, Markdown, YAML
 brew "prettier"
+# Modern replacement for ps written in Rust
 brew "procs"
+# Interpreted, interactive, object-oriented programming language
 brew "python@3.14"
+# Python interface to Tcl/Tk
 brew "python-tk@3.14"
+# Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# CLI proxy to minimize LLM token consumption
 brew "rtk"
+# Intuitive find & replace CLI
 brew "sd"
+# Cross-shell prompt for astronauts
 brew "starship"
+# Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
+# Opinionated Lua code formatter
 brew "stylua"
+# Terminal multiplexer
 brew "tmux"
+# Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Extremely fast Python package installer and resolver, written in Rust
 brew "uv"
+# Internet file retriever
 brew "wget"
+# Shell extension to navigate your filesystem faster
 brew "zoxide"
-brew "oven-sh/bun/bun"
-brew "steipete/tap/peekaboo"
-brew "steipete/tap/remindctl"
+# Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
+brew "oven-sh/bun/bun", trusted: true
+# Terminal-based AI coding assistant
 cask "claude-code"
+# OpenAI's coding agent that runs in your terminal
 cask "codex"
+# Free cross-platform office suite, fresh version
 cask "libreoffice"
-cask "neovide-app"
-cask "plistedit-pro"
+# Replacement for Docker Desktop
+cask "orbstack"
 uv "tavily-cli"
-npm "@earendil-works/pi-coding-agent"
 npm "@jackwener/opencli"
-npm "@thehappyboy/opencli-mcp-http"
+npm "@larksuite/cli"
 npm "@tobilu/qmd"
+npm "chrome-devtools-mcp"
+npm "defuddle"
 npm "neovim"
-npm "openclaw"
 npm "playwright"
