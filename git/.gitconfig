@@ -33,3 +33,7 @@
 	max-line-length = 200
 	whitespace-error = true
 	syntax-theme = base16-256
+[credential "https://miaoda-git.feishu.cn/apaas4.0/-/t_2ExSH3wg/code_OkaFPvOZg0lt.git"]
+	helper = 
+	helper = !lark-cli apps git-credential-helper --app-id 'app_17c9thcxxyc'
+	useHttpPath = true

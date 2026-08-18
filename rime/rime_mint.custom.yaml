@@ -1,13 +1,20 @@
 patch:
   # 语言模型
   "grammar/language": wanxiang-lts-zh-hans
-  "grammar/collocation_max_length": 5
+  "grammar/collocation_max_length": 8
   "grammar/collocation_min_length": 2
+  "grammar/collocation_penalty": -16
+  "grammar/non_collocation_penalty": -8
+  "grammar/weak_collocation_penalty": -100
+  "grammar/rear_penalty": -20
 
   # translator 内加载
   "translator/contextual_suggestions": true
   "translator/max_homophones": 7
   "translator/max_homographs": 7
+
+  # 输入长度上限，调大以配合万象语法模型
+  codeLengthLimit_processor: 100
 
   # 默认英文
   "switches/@0/reset": 1

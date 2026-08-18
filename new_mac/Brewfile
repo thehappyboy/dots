@@ -1,10 +1,11 @@
-tap "oven-sh/bun", trusted: true
 # Code searching, linting, rewriting
 brew "ast-grep"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # DuckDuckGo from the terminal
 brew "ddgr"
+# Extract article content and metadata from web pages
+brew "defuddle"
 # More intuitive version of du in rust
 brew "dust"
 # Modern, maintained replacement for ls
@@ -37,24 +38,20 @@ brew "lazygit"
 brew "mkcert"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
-# Command-line interface for SQLite
-brew "sqlite"
-# Open-source, cross-platform JavaScript runtime environment
-brew "node"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
 # Code formatter for JavaScript, CSS, JSON, GraphQL, Markdown, YAML
 brew "prettier"
 # Modern replacement for ps written in Rust
 brew "procs"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.14"
 # Python interface to Tcl/Tk
 brew "python-tk@3.14"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # CLI proxy to minimize LLM token consumption
 brew "rtk"
+# Safe, concurrent, practical language
+brew "rust"
 # Intuitive find & replace CLI
 brew "sd"
 # Cross-shell prompt for astronauts
@@ -73,21 +70,15 @@ brew "uv"
 brew "wget"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
-# Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
-brew "oven-sh/bun/bun", trusted: true
 # Terminal-based AI coding assistant
 cask "claude-code"
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
 # Free cross-platform office suite, fresh version
 cask "libreoffice"
-# Replacement for Docker Desktop
-cask "orbstack"
 uv "tavily-cli"
 npm "@jackwener/opencli"
 npm "@larksuite/cli"
+npm "@thehappyboy/desktop-commander"
+npm "@thehappyboy/web-search-mcp"
 npm "@tobilu/qmd"
-npm "chrome-devtools-mcp"
-npm "defuddle"
-npm "neovim"
-npm "playwright"
