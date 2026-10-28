@@ -7,4 +7,5 @@ for module in $MODULES; do
 done
 
 # Sublime Text - target 是 ~/Library/... 下的 Packages/User
-# stow --target="$HOME/Library/Application Support/Sublime Text/Packages/User" sublime
+stow --dir="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)" \
+  --target="$HOME/Library/Application Support/Sublime Text/Packages/User" sublime

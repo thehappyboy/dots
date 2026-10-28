@@ -1,0 +1,137 @@
+/* mdkite — Paper theme, mapped from markdown.style/editor "Paper".
+   Typography and layout are shared; only the palette switches with the theme,
+   so Paper works in both light and dark. */
+
+/* Paper — light */
+html[data-theme="light"] {
+  --bg: #fbf8f1;
+  --panel: #f4efe5;
+  --stroke: #e6dfd2;
+  --fg: #2b2622;
+  --fg-muted: #6f665c;
+  --link: #8a4b2a;
+  --code-bg: #f1ebe0;
+  --blockquote-border: #c58b5a;
+  --table-border: #e6dfd2;
+  --table-head: #efe7d9;
+  --table-row-alt: rgba(0, 0, 0, .02);
+  --accent: #8a4b2a;
+  --badge-bg: rgba(0, 0, 0, .04);
+  --badge-fg: #6f665c;
+  --scroll-thumb: rgba(111, 102, 92, .35);
+  --scroll-thumb-hover: rgba(111, 102, 92, .6);
+  --color-h1: #1f1a17;
+  --color-h2: #1f1a17;
+  --color-h3: #1f1a17;
+  --color-h4: #1f1a17;
+  --color-h5: #1f1a17;
+  --color-h6: #1f1a17;
+}
+
+/* Paper — dark: warm ink on warm charcoal, not GitHub blue-black */
+html[data-theme="dark"] {
+  --bg: #1b1917;
+  --panel: #232020;
+  --stroke: #3a3430;
+  --fg: #e8e1d5;
+  --fg-muted: #a89f92;
+  --link: #d0a878;
+  --code-bg: #262220;
+  --blockquote-border: #8a6a45;
+  --table-border: #3a3430;
+  --table-head: #262220;
+  --table-row-alt: rgba(255, 255, 255, .03);
+  --accent: #d0a878;
+  --badge-bg: rgba(255, 255, 255, .06);
+  --badge-fg: #a89f92;
+  --scroll-thumb: rgba(168, 159, 146, .35);
+  --scroll-thumb-hover: rgba(168, 159, 146, .6);
+  --color-h1: #e8e1d5;
+  --color-h2: #e8e1d5;
+  --color-h3: #e8e1d5;
+  --color-h4: #e8e1d5;
+  --color-h5: #e8e1d5;
+  --color-h6: #e8e1d5;
+}
+
+/* page measure and body text */
+#content {
+  max-width: 860px;
+  padding: 48px 40px 64px;
+  font-family: "Source Serif 4", "寒蟬錦書宋", "Songti SC", serif;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+#content p {
+  margin: 0 0 20px;
+}
+
+/* headings: serif, no bar, no rule, tighter leading */
+#content h1, #content h2, #content h3,
+#content h4, #content h5, #content h6 {
+  font-family: Lora, "寒蟬錦書宋", "Songti SC", serif;
+  color: var(--fg);
+  line-height: 1.2;
+  border: none;
+  padding: 0;
+}
+
+#content h1 { font-size: 2.25em; margin: 0 0 12px; }
+#content h2 { font-size: 1.6em; margin: 35px 0 12px; }
+#content h3 { font-size: 1.3em; margin: 28px 0 10px; }
+#content h4 { font-size: 1.1em; margin: 24px 0 8px; }
+
+/* links: always underlined, as in Paper */
+#content a {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: .15em;
+}
+
+/* inline code: warm chip */
+#content code {
+  background: var(--code-bg);
+  padding: .12em .4em;
+  border-radius: 4px;
+  font-size: .88em;
+  font-family: "BerkeleyMono Nerd Font", ui-monospace, monospace;
+}
+
+/* code blocks: same chip colour, no border, no inner chip */
+#content pre {
+  background: var(--code-bg);
+  border: none;
+  border-radius: 4px;
+  padding: 18px 21.6px;
+  font-size: 1em;
+  line-height: 1.5;
+  font-family: "BerkeleyMono Nerd Font", ui-monospace, monospace;
+}
+
+#content pre code,
+#content pre code.hljs {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  font-size: inherit;
+}
+
+/* quotes */
+#content blockquote {
+  border-left: 4px solid var(--blockquote-border);
+  color: var(--fg-muted);
+  padding: 5.4px 19.8px;
+  margin: 0 20.5px 20px;
+}
+
+/* tables */
+#content th {
+  background: var(--table-head);
+  font-weight: 700;
+}
+
+#content th, #content td {
+  border: 1px solid var(--table-border);
+  padding: 8.46px 12.69px;
+}

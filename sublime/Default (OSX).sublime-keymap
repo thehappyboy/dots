@@ -1,0 +1,15 @@
+[
+  {
+    "keys": [
+      "super+alt+j"
+    ],
+    "command": "pretty_json",
+    "context": [
+      {
+        "key": "selector",
+        "operator": "equal",
+        "operand": "source.json"
+      }
+    ]
+  }
+]

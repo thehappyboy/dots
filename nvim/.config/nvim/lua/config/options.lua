@@ -3,3 +3,7 @@
 -- Add any additional options here
 
 vim.g.lazyvim_python_lsp = "ty"
+
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.python3_host_prog = vim.fn.expand("~/.config/nvim/.venv/bin/python")
