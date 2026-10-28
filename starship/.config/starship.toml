@@ -3,6 +3,9 @@
 # Allow occasional slow startup of Homebrew language runtimes (milliseconds).
 command_timeout = 2000
 
+# Allow slow directory scans on external volumes (milliseconds).
+scan_timeout = 100
+
 format = """
 [](red)\
 $os\
@@ -84,6 +87,7 @@ style = "bg:yellow"
 format = '[[ $symbol $branch ](fg:crust bg:yellow)]($style)'
 
 [git_status]
+use_git_executable = true
 style = "bg:yellow"
 format = '[[($all_status$ahead_behind )](fg:crust bg:yellow)]($style)'
 
