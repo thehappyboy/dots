@@ -103,6 +103,3 @@ if status is-interactive
     # OpenClaw Completion
     source "/Users/hades/.openclaw/completions/openclaw.fish" 2>/dev/null || :
 end
-
-# OrbStack 集成
-source ~/.orbstack/shell/init2.fish 2>/dev/null || :
