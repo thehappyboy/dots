@@ -1,0 +1,15 @@
+{
+  // ruff 作为 Python 的第二个 LSP：负责 lint（E/F/I/UP...）与保存时格式化。
+  // pyright 负责类型检查与补全，两者可以同时挂在一个 Python 视图上。
+  "ruff": {
+    "enabled": true,
+    "command": [
+      "/opt/homebrew/bin/ruff",
+      "server"
+    ],
+    "selector": "source.python",
+    "env": {
+      "PATH": "/opt/homebrew/bin:/opt/homebrew/sbin"
+    }
+  }
+}

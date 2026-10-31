@@ -3,6 +3,10 @@
   "translate_tabs_to_spaces": true,
   "word_wrap": true,
   "wrap_width": 100,
+  "rulers": [],
   "trim_trailing_white_space_on_save": "none",
-  "spell_check": false
+  "ensure_newline_at_eof_on_save": true,
+  "spell_check": false,
+  "highlight_line": true,
+  "draw_centered": false
 }

@@ -1,0 +1,38 @@
+{
+  // pyright：类型检查。格式化交给 ruff（见 LanguageServers.sublime-settings）。
+  "selector": "source.python",
+  "schemes": [
+    "file",
+    "buffer",
+    "res"
+  ],
+  "server_path": "/opt/homebrew/bin/pyright-langserver",
+  "command": [
+    "/opt/homebrew/bin/node",
+    "/opt/homebrew/bin/pyright-langserver",
+    "--stdio"
+  ],
+  "env": {
+    "PATH": "/opt/homebrew/bin:/opt/homebrew/sbin"
+  },
+  "settings": {
+    "venvStrategies": [
+      "st_project_data",
+      "local_dot_venv",
+      "env_var_conda_prefix",
+      "env_var_virtual_env",
+      "rye",
+      "poetry",
+      "pdm",
+      "hatch",
+      "pipenv",
+      "pyenv",
+      "any_subdirectory"
+    ],
+    "python.analysis.typeCheckingMode": "standard",
+    "python.analysis.autoSearchPaths": true,
+    "python.analysis.useLibraryCodeForTypes": true,
+    "python.analysis.diagnosticMode": "openFilesOnly",
+    "python.analysis.autoImportCompletions": true
+  }
+}

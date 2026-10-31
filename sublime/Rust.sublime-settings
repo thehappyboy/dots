@@ -1,4 +1,11 @@
 {
   "tab_size": 4,
-  "translate_tabs_to_spaces": true
+  "translate_tabs_to_spaces": true,
+  "detect_indentation": false,
+  "rulers": [
+    100
+  ],
+  "word_wrap": false,
+  "ensure_newline_at_eof_on_save": true,
+  "trim_trailing_white_space_on_save": "all"
 }

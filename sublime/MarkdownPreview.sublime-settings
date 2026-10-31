@@ -1,0 +1,7 @@
+{
+  "browser": "default",
+  "parser": "markdown",
+  "theme": "auto",
+  "enable_autoreload": true,
+  "build_action": "browser"
+}

@@ -1,0 +1,37 @@
+{
+  // typescript-language-server：显式指定 node 路径，因为 GUI 启动的 Sublime 默认 PATH 里没有 Homebrew。
+  // tsserver.path 指向全局安装的 TypeScript 5.x（TypeScript 7 的原生版本不再带 tsserver.js）。
+  "selector": "source.js, source.jsx, source.ts, source.tsx",
+  "schemes": [
+    "file",
+    "buffer"
+  ],
+  "server_path": "/opt/homebrew/bin/typescript-language-server",
+  "command": [
+    "/opt/homebrew/bin/node",
+    "/opt/homebrew/bin/typescript-language-server",
+    "--stdio"
+  ],
+  "env": {
+    "PATH": "/opt/homebrew/bin:/opt/homebrew/sbin"
+  },
+  "initialization_options": {
+    "tsserver.path": "/opt/homebrew/lib/node_modules/typescript/lib/tsserver.js",
+    "tsserver.fallbackPath": "",
+    "tsserver.trace": "off",
+    "tsserver.useClientFileWatcher": true,
+    "tsserver.useSyntaxServer": "auto"
+  },
+  "settings": {
+    "typescript.format.tabSize": 2,
+    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+    "typescript.preferences.includePackageJsonAutoImports": "auto",
+    "typescript.preferences.quotePreference": "auto",
+    "javascript.format.tabSize": 2,
+    "typescript.inlayHints.parameterNames.enabled": "literals",
+    "typescript.inlayHints.enumMemberValues.enabled": true,
+    "typescript.inlayHints.variableTypes.enabled": false,
+    "typescript.inlayHints.propertyDeclarationTypes.enabled": false,
+    "typescript.inlayHints.functionLikeReturnTypes.enabled": false
+  }
+}

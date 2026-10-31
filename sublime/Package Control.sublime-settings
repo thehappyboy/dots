@@ -1,7 +1,17 @@
 {
+  "install_missing": true,
   "installed_packages": [
+    "Catppuccin color schemes",
+    "LSP",
+    "LSP-pyright",
+    "LSP-rust-analyzer",
+    "LSP-typescript",
+    "MarkdownPreview",
     "Package Control",
-    "Catppuccin",
-    "Pretty JSON"
-  ]
+    "Pretty JSON",
+    "Table Editor"
+  ],
+  "in_process_packages":
+  [
+  ],
 }

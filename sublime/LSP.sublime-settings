@@ -1,0 +1,41 @@
+{
+  // LSP 全局行为
+  "show_view_status": true,
+  "show_diagnostics_count_in_view_status": true,
+  "show_diagnostics_in_view_status": true,
+
+  // 保存时用语言服务器格式化（Rust -> rustfmt, Python -> ruff, TS -> tsserver）
+  "lsp_format_on_save": true,
+  "lsp_format_on_paste": false,
+  "on_save_task_timeout_ms": 3000,
+
+  // 代码操作与提示
+  "show_code_actions": "annotation",
+  "show_code_actions_in_hover": true,
+  "show_signature_help": true,
+  "show_code_lens": "annotation",
+  "show_references_in_quick_panel": true,
+
+  // 内联提示（类型/参数名），不需要时可在命令面板执行 LSP: Toggle Inlay Hints
+  "show_inlay_hints": true,
+  "inlay_hints_max_length": 40,
+
+  // 补全
+  "completion_insert_mode": "insert",
+  "inhibit_word_completions": true,
+
+  // 诊断显示
+  "diagnostics_delay_ms": 150,
+  "show_diagnostics_severity_level": 4,
+  "show_diagnostics_annotations_severity_level": 0,
+  "show_diagnostics_panel_on_save": 0,
+  "diagnostics_highlight_style": {
+    "error": "squiggly",
+    "warning": "squiggly",
+    "info": "stippled",
+    "hint": "stippled"
+  },
+  "diagnostics_gutter_marker": "sign",
+  "show_multiline_diagnostics_highlights": true,
+  "show_diagnostics_in_hover": true
+}

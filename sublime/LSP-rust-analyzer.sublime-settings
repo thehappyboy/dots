@@ -1,0 +1,28 @@
+{
+  // rust-analyzer：使用 Homebrew 安装的二进制，并把 Homebrew 目录注入到服务器进程的 PATH，
+  // 否则从 Finder 启动的 Sublime 找不到 cargo / rustc。
+  "selector": "source.rust",
+  "schemes": [
+    "file",
+    "buffer"
+  ],
+  "server_path": "/opt/homebrew/bin/rust-analyzer",
+  "command": [
+    "/opt/homebrew/bin/rust-analyzer"
+  ],
+  "env": {
+    "PATH": "/opt/homebrew/bin:/opt/homebrew/sbin"
+  },
+  "initialization_options": {
+    "checkOnSave": true,
+    "check.command": "clippy",
+    "cargo.allFeatures": true,
+    "cargo.buildScripts.enable": true,
+    "procMacro.enable": true,
+    "completion.autoimport.enable": true,
+    "inlayHints.typeHints": true,
+    "inlayHints.parameterHints": true,
+    "inlayHints.chainingHints": true,
+    "inlayHints.closingBraceHints.enable": true
+  }
+}

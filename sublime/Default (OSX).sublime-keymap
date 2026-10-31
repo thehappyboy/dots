@@ -11,5 +11,23 @@
         "operand": "source.json"
       }
     ]
+  },
+  {
+    // 用当前语言服务器格式化整个文件（Rust/Python/TS 都支持）
+    "keys": [
+      "super+alt+f"
+    ],
+    "command": "lsp_format_document"
+  },
+  {
+    // Markdown 预览：在浏览器中打开，保存后自动刷新
+    "keys": [
+      "super+shift+m"
+    ],
+    "command": "markdown_preview",
+    "args": {
+      "target": "browser",
+      "parser": "markdown"
+    }
   }
 ]
