@@ -4,7 +4,7 @@
   ],
   "index_files": false,
   "theme": "Default.sublime-theme",
-  "color_scheme": "Packages/Catppuccin color schemes/build/Catppuccin Latte.sublime-color-scheme",
+  "color_scheme": "Catppuccin Frappe.sublime-color-scheme",
   "font_face": "BerkeleyMono Nerd Font",
   "font_size": 14,
   "font_options": [
@@ -42,5 +42,5 @@
     ".mypy_cache",
     ".pytest_cache",
     ".ruff_cache"
-  ]
+  ],
 }
