@@ -59,6 +59,8 @@ Overlay modules preserve app- and magpie-managed dynamic state:
 
 `new_mac/` contains bootstrap scripts. `new_mac/post_install.sh` creates the
 Neovim Python venv, applies the overlays, syncs magpie and checks CLI presence.
+RTK hooks are injected by magpie for Claude Code, Codex and Antigravity CLI;
+they are intentionally not stored in dots.
 
 Retired configs: zed, cursor, rime, zsh and tmux. They are kept under
 `~/Library/Application Support/dots-retired/` when removed from this repo.

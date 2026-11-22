@@ -60,18 +60,6 @@ else
   printf '[codex] stable settings unchanged: %s\n' "$target"
 fi
 
-if [ -f "$ROOT/codex/hooks.json" ]; then
-  hooks_target="$HOME/.codex/hooks.json"
-  if ! cmp -s "$ROOT/codex/hooks.json" "$hooks_target"; then
-    if [ -f "$hooks_target" ]; then
-      cp -p "$hooks_target" "$hooks_target.pre-overlay-$(date +%Y%m%dT%H%M%S)"
-    fi
-    install -m 600 "$ROOT/codex/hooks.json" "$hooks_target"
-    changed=1
-    printf '[codex] hooks applied: %s\n' "$hooks_target"
-  fi
-fi
-
 if [ "$changed" -eq 0 ]; then
   printf '[codex] no changes\n'
 fi
