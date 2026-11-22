@@ -5,6 +5,14 @@ ROOT="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
 TARGET="${HOME}"
 MODULES="npm uv bat fish git nvim ruff warp ghostty starship agy"
 
+for command in stow jq uv; do
+  if ! command -v "$command" >/dev/null 2>&1; then
+    printf '[stow] missing required command: %s\n' "$command" >&2
+    printf '[stow] install the Brewfile first, then rerun this script\n' >&2
+    exit 1
+  fi
+done
+
 for module in $MODULES; do
   stow --dir="$ROOT" --target="$TARGET" --restow "$module"
 done

@@ -15,6 +15,14 @@ fi
 log "2/4 Homebrew and Brewfile"
 "$ROOT/new_mac/brew_install.sh"
 
+for command in stow jq uv nvim; do
+  if ! command -v "$command" >/dev/null 2>&1; then
+    printf '[bootstrap] missing required command: %s\n' "$command" >&2
+    printf '[bootstrap] check the Brewfile result before applying dotfiles\n' >&2
+    exit 1
+  fi
+done
+
 log "3/4 Stow modules and overlays"
 "$ROOT/stow-manage.sh"
 

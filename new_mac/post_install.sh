@@ -6,18 +6,23 @@ warn() { printf '[post-install] WARN: %s\n' "$*" >&2; }
 
 # Neovim's Python provider is intentionally a local venv. The nvim config
 # points at this exact path, so keep it independent of the user's global Python.
-if command -v nvim >/dev/null 2>&1 && command -v uv >/dev/null 2>&1; then
-  venv="$HOME/.config/nvim/.venv"
-  if [ ! -x "$venv/bin/python" ]; then
-    log "creating Neovim Python venv: $venv"
-    uv venv "$venv"
-  fi
-  log "installing pynvim into $venv"
-  uv pip install --python "$venv/bin/python" pynvim
-  "$venv/bin/python" -c 'import pynvim; print("[post-install] pynvim OK:", pynvim.__version__)'
-else
-  warn "nvim or uv not found; Neovim Python provider not configured"
+if ! command -v nvim >/dev/null 2>&1 || ! command -v uv >/dev/null 2>&1; then
+  warn "nvim or uv is missing; install the Brewfile before running post-install"
+  exit 1
 fi
+if ! command -v jq >/dev/null 2>&1; then
+  warn "jq is missing; install the Brewfile before running post-install"
+  exit 1
+fi
+
+venv="$HOME/.config/nvim/.venv"
+if [ ! -x "$venv/bin/python" ]; then
+  log "creating Neovim Python venv: $venv"
+  uv venv "$venv"
+fi
+log "installing pynvim into $venv"
+uv pip install --python "$venv/bin/python" pynvim
+"$venv/bin/python" -c 'import pynvim; print("[post-install] pynvim OK:", pynvim.__version__)'
 
 root="$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)"
 
