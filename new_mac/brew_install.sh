@@ -18,8 +18,8 @@ DOTFILES_DIR="${HOME}/dots"
 BREWFILE_PATH="${DOTFILES_DIR}/new_mac/Brewfile"
 
 # Proxy Settings
-PROXY_HTTP="http://127.0.0.1:6152"
-PROXY_SOCKS="socks5://127.0.0.1:6153"
+PROXY_HTTP="${PROXY_HTTP:-}"
+PROXY_SOCKS="${PROXY_SOCKS:-}"
 
 # Homebrew mirror
 
@@ -43,11 +43,15 @@ abort() {
 }
 
 setup_proxy() {
-  log_info "Configuring proxy settings for this session..."
-  export http_proxy="$PROXY_HTTP"
-  export https_proxy="$PROXY_HTTP"
-  export all_proxy="$PROXY_SOCKS"
-  log_success "Proxy set: HTTP=$PROXY_HTTP"
+  if [ -n "$PROXY_HTTP" ]; then
+    log_info "Configuring proxy settings for this session..."
+    export http_proxy="$PROXY_HTTP"
+    export https_proxy="$PROXY_HTTP"
+    [ -n "$PROXY_SOCKS" ] && export all_proxy="$PROXY_SOCKS"
+    log_success "Proxy set: HTTP=$PROXY_HTTP"
+  else
+    log_info "No proxy configured; using the current network."
+  fi
 }
 
 set_homebrew_mirror() {
@@ -110,6 +114,14 @@ install_dependencies() {
   brew bundle --file "$BREWFILE_PATH" --verbose || log_warn "Some Brewfile items failed to install."
 }
 
+link_full_tools() {
+  if command -v brew >/dev/null 2>&1; then
+    log_info "Linking keg-only ffmpeg-full and imagemagick-full..."
+    brew link ffmpeg-full imagemagick-full -f --overwrite \
+      || log_warn "Could not link one or more full Homebrew formulae."
+  fi
+}
+
 cleanup() {
   log_info "Cleaning up Homebrew..."
   brew cleanup --prune=all
@@ -128,6 +140,7 @@ main() {
   clone_dotfiles
   # Step 3: Install Dependencies
   install_dependencies
+  link_full_tools
   # cleanup
 
   log_success "Setup completed successfully!"

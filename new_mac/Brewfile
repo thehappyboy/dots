@@ -17,12 +17,10 @@ brew "eza"
 brew "fastfetch"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
-# Play, record, convert, and stream select audio and video codecs
-brew "ffmpeg"
 # Framework for layout and rendering of i18n text
 brew "pango"
 # Play, record, convert, and stream many audio and video codecs
-brew "ffmpeg-full"
+brew "ffmpeg-full", link: true
 # User-friendly command-line shell for UNIX-like operating systems
 brew "fish"
 # Command-line fuzzy finder written in Go
@@ -52,7 +50,7 @@ brew "prettier"
 # Modern replacement for ps written in Rust
 brew "procs"
 # Python interface to Tcl/Tk
-brew "python-tk@3.14"
+brew "python-tk@3.15"
 # SVG rendering tool and library
 brew "resvg"
 # Search tool like grep and The Silver Searcher
@@ -71,8 +69,6 @@ brew "starship"
 brew "stow"
 # Opinionated Lua code formatter
 brew "stylua"
-# Terminal multiplexer
-brew "tmux"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
 # Extremely fast Python package installer and resolver, written in Rust

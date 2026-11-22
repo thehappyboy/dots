@@ -1,0 +1,29 @@
+{
+  "deploymentMode": "3p",
+  "preferences": {
+    "chicagoEnabled": true,
+    "chicagoAutoUnhide": true,
+    "chicagoPreferredMode": "full_control",
+    "coworkHipaaRestricted": false,
+    "orgWorkAcrossAppsDisabled": false,
+    "ccdScheduledTasksEnabled": true,
+    "coworkScheduledTasksEnabled": true,
+    "coworkWebSearchEnabled": true,
+    "keepAwakeEnabled": true,
+    "dockBounceEnabled": true,
+    "localAgentModeTrustedFolders": [
+      "/Users/hades/projects/test",
+      "/Users/hades/dots",
+      "/Users/hades/projects/llm_wiki",
+      "/Users/hades/projects/团员"
+    ]
+  },
+  "orgAccountPreferences": {
+    "enabled": true,
+    "preferredMode": "full_control"
+  },
+  "profile": {
+    "disableAutoUpdates": true,
+    "inferenceGatewayAutoModeServerChecks": false
+  }
+}

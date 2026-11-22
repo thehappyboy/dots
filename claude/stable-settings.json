@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "defaultMode": "bypassPermissions"
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "rtk hook claude"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "/opt/homebrew/bin/ccsp"
+  },
+  "theme": "dark",
+  "outputStyle": "Proactive",
+  "effortLevel": "high",
+  "enableWorkflows": true,
+  "skipDangerousModePermissionPrompt": true
+}

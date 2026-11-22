@@ -1,4 +1,4 @@
-function agy
+function magy
     if test -x '/Applications/magpie.app/Contents/MacOS/magpie'
         '/Applications/magpie.app/Contents/MacOS/magpie' agy run $argv
     else

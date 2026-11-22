@@ -1,8 +1,0 @@
-@jackwener/opencli
-@thehappyboy/opencli-mcp-http
-@tobilu/qmd
-neovim
-npm
-playwright
-@earendil-works/pi-coding-agent
-openclaw

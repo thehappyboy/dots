@@ -1,0 +1,22 @@
+{
+  "allowNonWorkspaceAccess": true,
+  "colorScheme": "tokyo night",
+  "permissions": {
+    "allow": [
+      "command(*)",
+      "read_file(*)",
+      "write_file(*)",
+      "read_url(*)",
+      "execute_url(*)",
+      "mcp(*)"
+    ]
+  },
+  "toolPermission": "always-proceed",
+  "trustedWorkspaces": [
+    "/Users/hades",
+    "/Users/hades/projects/digit-road",
+    "/Volumes/T7_PSSD",
+    "/Users/hades/projects/test",
+    "/Users/hades/dots"
+  ]
+}

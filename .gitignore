@@ -21,3 +21,6 @@ clash/
 *.fish.secret
 secret_*
 **/secret_*
+
+# Overlay backups are local recovery files.
+*.pre-overlay-*
