@@ -24,6 +24,7 @@
   },
   "profile": {
     "disableAutoUpdates": true,
-    "inferenceGatewayAutoModeServerChecks": false
+    "inferenceGatewayAutoModeServerChecks": false,
+    "skipWebFetchPreflight": true
   }
 }
