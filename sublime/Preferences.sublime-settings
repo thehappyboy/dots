@@ -5,7 +5,7 @@
   "index_files": false,
   "theme": "Default.sublime-theme",
   "color_scheme": "Catppuccin Frappe.sublime-color-scheme",
-  "font_face": "BerkeleyMono Nerd Font",
+  "font_face": "BerkeleyMonoNF",
   "font_size": 14,
   "font_options": [
     "no_calt"

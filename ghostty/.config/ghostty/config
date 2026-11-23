@@ -5,7 +5,7 @@ auto-update = check
 theme = Catppuccin Mocha
 
 # -- 字体 --
-font-family = BerkeleyMono Nerd Font
+font-family = BerkeleyMonoNF
 font-family = LXGW WenKai
 font-size = 14
 # font-thicken = true

@@ -95,7 +95,7 @@ html[data-theme="dark"] {
   padding: .12em .4em;
   border-radius: 4px;
   font-size: .88em;
-  font-family: "BerkeleyMono Nerd Font", ui-monospace, monospace;
+  font-family: "BerkeleyMonoNF", ui-monospace, monospace;
 }
 
 /* code blocks: same chip colour, no border, no inner chip */
@@ -106,7 +106,7 @@ html[data-theme="dark"] {
   padding: 18px 21.6px;
   font-size: 1em;
   line-height: 1.5;
-  font-family: "BerkeleyMono Nerd Font", ui-monospace, monospace;
+  font-family: "BerkeleyMonoNF", ui-monospace, monospace;
 }
 
 #content pre code,

@@ -96,7 +96,7 @@ stow --dir="$HOME/dots" --target="$HOME/Library/Application Support/Sublime Text
 
 ### Sublime 编辑偏好
 
-- BerkeleyMono Nerd Font 14；Catppuccin Latte / Mocha 随系统明暗切换，Adaptive 界面主题。
+- BerkeleyMonoNF 14；Catppuccin Latte / Mocha 随系统明暗切换，Adaptive 界面主题。
 - JSON/YAML/JS/TS：2 空格；Python/Rust：4 空格。Markdown 自动换行到 100 列，保留行尾双空格。
 - Pretty JSON：`Cmd+Alt+J` 格式化 JSON，保留中文和键顺序，保存时校验。
 - Catppuccin 和 Pretty JSON 由 Package Control 清单管理；本机首次通过上游 Git 仓库安装。

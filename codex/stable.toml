@@ -18,7 +18,8 @@ opaqueWindows = false
 surface = "#ffffff"
 
 [desktop.appearanceLightChromeTheme.fonts]
-ui = '"BerkeleyMono Nerd Font"'
+code = '"BerkeleyMonoNF"'
+ui = '"BerkeleyMonoNF"'
 
 [desktop.appearanceLightChromeTheme.semanticColors]
 diffAdded = "#00a240"
