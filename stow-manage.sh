@@ -22,14 +22,8 @@ SUBLIME_TARGET="$HOME/Library/Application Support/Sublime Text/Packages/User"
 mkdir -p "$SUBLIME_TARGET"
 stow --dir="$ROOT" --target="$SUBLIME_TARGET" --restow sublime
 
-for script in \
-  "$ROOT/claude/apply.sh" \
-  "$ROOT/codex/apply.sh" \
-  "$ROOT/claude-desktop-3p/apply.sh"
-do
-  if [ -x "$script" ]; then
-    "$script"
-  else
-    printf '[stow] skip non-executable overlay: %s\n' "$script" >&2
-  fi
-done
+if [ "${DOTS_DEFER_OVERLAYS:-0}" = "1" ]; then
+  printf '[stow] optional app configs deferred to post-install\n'
+else
+  "$ROOT/apply-overlays.sh" --ask
+fi

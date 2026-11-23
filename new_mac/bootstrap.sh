@@ -23,10 +23,10 @@ for command in stow jq uv nvim; do
   fi
 done
 
-log "3/4 Stow modules and overlays"
-"$ROOT/stow-manage.sh"
+log "3/4 Stow static modules"
+DOTS_DEFER_OVERLAYS=1 "$ROOT/stow-manage.sh"
 
-log "4/4 Post-install checks and Neovim Python"
+log "4/4 Post-install checks, Neovim Python and optional app configs"
 "$ROOT/new_mac/post_install.sh"
 
 log "complete"

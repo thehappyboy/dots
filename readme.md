@@ -20,8 +20,9 @@ cd "$HOME/dots"
 
 1. `settings.sh` applies macOS preferences.
 2. `brew_install.sh` installs Homebrew and the Brewfile.
-3. `stow-manage.sh` applies static modules and overlays.
-4. `post_install.sh` creates the Neovim Python venv, syncs magpie and checks CLIs.
+3. `stow-manage.sh` applies static modules.
+4. `post_install.sh` creates the Neovim Python venv, syncs magpie, asks before
+   applying the optional application configs and checks CLIs.
 
 To skip the macOS settings step:
 
@@ -51,14 +52,31 @@ Static Stow modules:
 - agy (`~/.gemini/antigravity-cli/settings.json`)
 - sublime (custom target under `~/Library/Application Support/Sublime Text/Packages/User`)
 
-Overlay modules preserve app- and magpie-managed dynamic state:
+Optional overlay modules preserve app- and magpie-managed dynamic state. They
+are offered after the static modules and, during bootstrap, after magpie sync:
 
 - `claude`: stable Claude Code keys; model/env/model picker stay owned by magpie.
 - `codex`: stable Codex keys; gateway, model catalog and MCP stay owned by magpie.
 - `claude-desktop-3p`: stable Desktop preferences and policy; gateway, models, MCP and skills stay owned by magpie.
 
+The three overlays are opt-in. During bootstrap they are offered one by one,
+and a non-interactive run skips them. To apply or reapply them later:
+
+Running `./stow-manage.sh` directly asks immediately after the static modules;
+bootstrap defers the prompts until after magpie sync.
+
+```sh
+./apply-overlays.sh          # ask for each config
+./apply-overlays.sh --yes    # apply all
+./apply-overlays.sh --no     # skip all
+```
+
+Launch Claude Desktop 3P once before applying its overlay, otherwise the
+overlay has no profile to update.
+
 `new_mac/` contains bootstrap scripts. `new_mac/post_install.sh` creates the
-Neovim Python venv, applies the overlays, syncs magpie and checks CLI presence.
+Neovim Python venv, syncs magpie, offers the optional overlays and checks CLI
+presence.
 RTK hooks are injected by magpie for Claude Code, Codex and Antigravity CLI;
 they are intentionally not stored in dots.
 

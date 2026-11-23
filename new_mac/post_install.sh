@@ -33,16 +33,9 @@ if command -v magpie >/dev/null 2>&1; then
 fi
 
 # Keep the stable parts of Claude/Codex/Desktop 3P settings after magpie or
-# an app writes its dynamic state. All scripts preserve unrelated keys.
-for script in \
-  "$root/claude/apply.sh" \
-  "$root/codex/apply.sh" \
-  "$root/claude-desktop-3p/apply.sh"
-do
-  if [ -x "$script" ]; then
-    "$script"
-  fi
-done
+# an app writes its dynamic state. The overlays are opt-in because a fresh
+# machine may not have those applications installed yet.
+"$root/apply-overlays.sh" --ask
 
 log "CLI presence:"
 for cmd in lark-cli desktop-commander opencli qmd mcporter playwright; do
@@ -71,6 +64,7 @@ fi
 
 cat <<'EOF'
 [post-install] Manual next steps (interactive login is intentionally not automated):
+  ./apply-overlays.sh              # apply any optional app configs you skipped
   lark-cli doctor && lark-cli auth login --help
   opencli doctor && opencli auth status
   opencli extension: install the Browser Bridge extension if doctor says it is disconnected
