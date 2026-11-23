@@ -11,12 +11,7 @@
     "coworkWebSearchEnabled": true,
     "keepAwakeEnabled": true,
     "dockBounceEnabled": true,
-    "localAgentModeTrustedFolders": [
-      "/Users/hades/projects/test",
-      "/Users/hades/dots",
-      "/Users/hades/projects/llm_wiki",
-      "/Users/hades/projects/团员"
-    ]
+    "localAgentModeTrustedFolders": []
   },
   "orgAccountPreferences": {
     "enabled": true,
