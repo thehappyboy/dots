@@ -41,6 +41,11 @@ def merge(dst, src):
 
 
 merge(target, stable)
+
+notify_client = Path.home() / ".codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient"
+if notify_client.is_file():
+    target["notify"] = [str(notify_client), "turn-ended"]
+
 out_path.write_text(tomlkit.dumps(target))
 out_path.chmod(0o600)
 PY

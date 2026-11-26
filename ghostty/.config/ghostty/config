@@ -1,8 +1,8 @@
 auto-update = check
 
 # -- 主题 --
-# theme = light:Catppuccin Latte,dark:Catppuccin Mocha
-theme = Catppuccin Mocha
+theme = light:Catppuccin Latte,dark:Catppuccin Mocha
+# theme = Catppuccin Mocha
 
 # -- 字体 --
 font-family = BerkeleyMonoNF
@@ -15,7 +15,6 @@ font-feature = +liga
 # -- 窗口 --
 background-opacity = 0.9
 background-blur = 30
-# macon-titlebar-style = native
 macos-titlebar-style = transparent
 window-padding-balance = true
 window-save-state = always
@@ -25,6 +24,9 @@ window-padding-y = 10
 window-height = 60
 window-width = 120
 
+# -- icon --
+macos-icon = custom
+macos-custom-icon = ~/.config/ghostty/ghostty.icns
 
 # -- 光标 --
 cursor-style = block

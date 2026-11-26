@@ -29,6 +29,7 @@ tmp_config=$(mktemp "$config.tmp.XXXXXX")
 jq --slurpfile policy "$policy" '
   .deploymentMode = $policy[0].deploymentMode
   | .preferences = ((.preferences // {}) + $policy[0].preferences)
+  | .preferences.localAgentModeTrustedFolders = (.preferences.localAgentModeTrustedFolders // [])
   | .preferences.bypassPermissionsOptInByAccount =
       ((.preferences.bypassPermissionsOptInByAccount // {}) | with_entries(.value = true))
   | .preferences.bypassPermissionsGateByAccount =
@@ -44,7 +45,7 @@ jq --slurpfile policy "$policy" '
 ' "$config" > "$tmp_config"
 
 tmp_profile=$(mktemp "$profile.tmp.XXXXXX")
-jq --slurpfile policy "$policy" '. + $policy[0].profile' "$profile" > "$tmp_profile"
+jq --slurpfile policy "$policy" '. * $policy[0].profile' "$profile" > "$tmp_profile"
 
 if cmp -s "$tmp_config" "$config" && cmp -s "$tmp_profile" "$profile"; then
   rm -f "$tmp_config" "$tmp_profile"

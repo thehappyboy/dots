@@ -1,6 +1,6 @@
 {
   "ignored_packages": [
-    "Vintage",
+    "Vintage"
   ],
   "index_files": false,
   "theme": "Default.sublime-theme",
@@ -42,5 +42,5 @@
     ".mypy_cache",
     ".pytest_cache",
     ".ruff_cache"
-  ],
+  ]
 }

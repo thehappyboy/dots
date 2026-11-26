@@ -49,17 +49,18 @@ For an existing machine with Homebrew and the Brewfile already installed:
 Static Stow modules:
 
 - npm, uv, bat, fish, git, nvim, ruff, warp, ghostty, starship
-- agy (`~/.gemini/antigravity-cli/settings.json`)
 - sublime (custom target under `~/Library/Application Support/Sublime Text/Packages/User`)
 
 Optional overlay modules preserve app- and magpie-managed dynamic state. They
 are offered after the static modules and, during bootstrap, after magpie sync:
 
 - `claude`: stable Claude Code keys; model/env/model picker stay owned by magpie.
-- `codex`: stable Codex keys; gateway, model catalog and MCP stay owned by magpie.
+- `codex`: stable Codex keys; gateway, model catalog, projects and MCP stay owned by magpie/local app.
 - `claude-desktop-3p`: stable Desktop preferences and policy; gateway, models, MCP and skills stay owned by magpie.
+- `agy`: stable Antigravity CLI permissions and workflow policy (`~/.gemini/antigravity-cli/settings.json`); model and trusted workspaces stay local.
+- `zed`: stable Zed editor/LSP preferences and keymap (`~/.config/zed/`); `agent`, `language_models` and `context_servers` stay owned by magpie.
 
-The three overlays are opt-in. During bootstrap they are offered one by one,
+The five overlays are opt-in. During bootstrap they are offered one by one,
 and a non-interactive run skips them. To apply or reapply them later:
 
 Running `./stow-manage.sh` directly asks immediately after the static modules;
@@ -80,7 +81,7 @@ presence.
 RTK hooks are injected by magpie for Claude Code, Codex and Antigravity CLI;
 they are intentionally not stored in dots.
 
-Retired configs: zed, cursor, rime, zsh and tmux. They are kept under
+Retired configs: cursor, rime, zsh and tmux. They are kept under
 `~/Library/Application Support/dots-retired/` when removed from this repo.
 
 ## Sublime Text (macOS)
@@ -92,12 +93,12 @@ mkdir -p "$HOME/Library/Application Support/Sublime Text/Packages/User"
 stow --dir="$HOME/dots" --target="$HOME/Library/Application Support/Sublime Text/Packages/User" sublime
 ```
 
-首次迁移已有配置时先备份并处理同名文件冲突。缓存、会话、证书和插件实体不纳入版本管理。语言服务器由 `LSP`、`LSP-tsgo`、`LSP-pyright` 和 `LSP-rust-analyzer` 提供；TypeScript 使用官方全球 TypeScript 7 的 `tsc --lsp` 入口。
+首次迁移已有配置时先备份并处理同名文件冲突。缓存、会话、证书和插件实体不纳入版本管理。语言服务器由 `LSP`（`ruff` + `ty`）、`LSP-tsgo` 和 `LSP-rust-analyzer` 提供；TypeScript 使用官方全球 TypeScript 7 的 `tsc --lsp` 入口，`ruff` 与 `ty` 均使用 `~/.local/bin` 安装。
 
 ### Sublime 编辑偏好
 
-- BerkeleyMonoNF 14；Catppuccin Latte / Mocha 随系统明暗切换，Adaptive 界面主题。
+- BerkeleyMonoNF 14；Catppuccin Frappe 配色与 Default 界面主题。
 - JSON/YAML/JS/TS：2 空格；Python/Rust：4 空格。Markdown 自动换行到 100 列，保留行尾双空格。
 - Pretty JSON：`Cmd+Alt+J` 格式化 JSON，保留中文和键顺序，保存时校验。
 - Catppuccin 和 Pretty JSON 由 Package Control 清单管理；本机首次通过上游 Git 仓库安装。
-- 未安装语言服务器；以上语言使用 Sublime 内置语法高亮。
+- 语言服务器：`ty` + `ruff`（Python）、`rust-analyzer`（Rust）、`tsgo`（JS/TS）。

@@ -1,3 +1,3 @@
 function la --wraps=eza
-  eza --color=always --icons --group-directories-first --all $argv;
+  eza --color=auto --icons --group-directories-first --all $argv;
 end

@@ -4,7 +4,7 @@
   "show_diagnostics_count_in_view_status": true,
   "show_diagnostics_in_view_status": true,
 
-  // 保存时用语言服务器格式化（Rust -> rustfmt, Python -> ruff, TS -> tsserver）
+  // 保存时用语言服务器格式化（Rust -> rustfmt, Python -> ruff, TS -> tsgo）
   "lsp_format_on_save": true,
   "lsp_format_on_paste": false,
   "on_save_task_timeout_ms": 3000,

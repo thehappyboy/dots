@@ -12,7 +12,7 @@ fi
 
 tmp=$(mktemp "$target.tmp.XXXXXX")
 jq --slurpfile stable "$stable" '
-  . + $stable[0]
+  . * $stable[0]
 ' "$target" > "$tmp"
 
 if cmp -s "$tmp" "$target"; then

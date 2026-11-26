@@ -49,6 +49,17 @@ if [ -d "/Applications/Claude-3p.app" ] || [ -d "$HOME/Applications/Claude-3p.ap
   desktop_detected=true
 fi
 
+agy_detected=false
+if command -v agy >/dev/null 2>&1 || [ -f "$HOME/.gemini/antigravity-cli/settings.json" ]; then
+  agy_detected=true
+fi
+
+zed_detected=false
+if [ -d "/Applications/Zed.app" ] || [ -d "$HOME/Applications/Zed.app" ] || \
+   command -v zed >/dev/null 2>&1 || [ -f "$HOME/.config/zed/settings.json" ]; then
+  zed_detected=true
+fi
+
 confirm() {
   label=$1
   detected=$2
@@ -94,3 +105,5 @@ apply_one() {
 apply_one "Claude Code" "$ROOT/claude/apply.sh" "$claude_detected"
 apply_one "Codex" "$ROOT/codex/apply.sh" "$codex_detected"
 apply_one "Claude Desktop 3P" "$ROOT/claude-desktop-3p/apply.sh" "$desktop_detected"
+apply_one "Antigravity CLI (agy)" "$ROOT/agy/apply.sh" "$agy_detected"
+apply_one "Zed" "$ROOT/zed/apply.sh" "$zed_detected"

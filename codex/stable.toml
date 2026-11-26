@@ -1,7 +1,4 @@
-notify = [
-  "/Users/hades/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient",
-  "turn-ended",
-]
+approval_policy = "never"
 sandbox_mode = "danger-full-access"
 
 [desktop]
@@ -65,9 +62,3 @@ memories = true
 [memories]
 generate_memories = true
 use_memories = true
-
-[projects."/Users/hades/projects/linear"]
-trust_level = "trusted"
-
-[projects."/Users/hades/projects/claude_research"]
-trust_level = "trusted"

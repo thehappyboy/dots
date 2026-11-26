@@ -18,7 +18,7 @@ return {
         port = 0, -- 0 = auto (8421 for takeover, OS-assigned for multi)
         open_browser = true,
         default_theme = "light", -- "dark" or "light"; initial preview theme
-        custom_css = "~/.config/nvim/mdkite.css", -- Paper palette, layered over bundled styles
+        custom_css = vim.fn.stdpath("config") .. "/mdkite.css", -- Paper palette, layered over bundled styles
         debounce_ms = 300,
       })
     end,

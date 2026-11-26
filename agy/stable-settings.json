@@ -1,0 +1,15 @@
+{
+  "allowNonWorkspaceAccess": true,
+  "artifactReviewPolicy": "always-proceed",
+  "toolPermission": "always-proceed",
+  "permissions": {
+    "allow": [
+      "command(*)",
+      "execute_url(*)",
+      "mcp(*)",
+      "read_file(*)",
+      "read_url(*)",
+      "write_file(*)"
+    ]
+  }
+}

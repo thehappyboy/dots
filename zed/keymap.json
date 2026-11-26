@@ -1,0 +1,16 @@
+// Zed keymap（对齐 ~/dots/sublime/Default (OSX).sublime-keymap）
+[
+  {
+    "context": "Editor && mode == full",
+    "bindings": {
+      "cmd-alt-f": "editor::Format",
+      "cmd-alt-j": "editor::Format"
+    }
+  },
+  {
+    "context": "Editor && language == Markdown",
+    "bindings": {
+      "cmd-shift-m": "markdown::OpenPreviewToTheSide"
+    }
+  }
+]

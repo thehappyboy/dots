@@ -3,7 +3,7 @@ set -eu
 
 ROOT="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
 TARGET="${HOME}"
-MODULES="npm uv bat fish git nvim ruff warp ghostty starship agy"
+MODULES="npm uv bat fish git nvim ruff warp ghostty starship"
 
 for command in stow jq uv; do
   if ! command -v "$command" >/dev/null 2>&1; then

@@ -1,21 +1,21 @@
 {
-  // TypeScript 7 原生 LSP（tsgo）。server_path 指向全局 TypeScript 7 的包装入口。
-  // 不启用插件自管安装，避免启动时访问 npm registry。
+  // TypeScript 7 原生 LSP（tsgo）。直接调用 PATH 中的 tsc --lsp（由全局 typescript 包提供），
+  // 通过双架构 PATH 同时兼容 Apple Silicon (/opt/homebrew) 与 Intel (/usr/local)，避免硬编码前缀。
+  // server_path 设为非 "auto" 以避免插件自管安装并访问 npm registry。
   "status_text": "$version, $source",
   "selector": "source.js, source.jsx, source.ts, source.tsx",
   "schemes": [
     "file",
     "buffer"
   ],
-  "server_path": "/opt/homebrew/lib/node_modules/typescript/lib/tsc.js",
+  "server_path": "tsc",
   "command": [
-    "/opt/homebrew/bin/node",
-    "/opt/homebrew/lib/node_modules/typescript/lib/tsc.js",
+    "tsc",
     "--lsp",
     "-stdio"
   ],
   "env": {
-    "PATH": "/opt/homebrew/bin:/opt/homebrew/sbin"
+    "PATH": "/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/local/sbin:${home}/.local/bin"
   },
   "initialization_options": {
     "logVerbosity": 4

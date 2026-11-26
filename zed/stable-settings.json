@@ -1,0 +1,161 @@
+{
+  "ui_font_family": "BerkeleyMonoNF",
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+    "anthropic_retention": false
+  },
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "Catppuccin Frappe"
+  },
+  "buffer_font_family": "BerkeleyMonoNF",
+  "buffer_font_size": 14,
+  "buffer_font_features": {
+    "calt": false
+  },
+  "ui_font_size": 15.0,
+  "current_line_highlight": "line",
+  "preferred_line_length": 100,
+  "show_whitespaces": "selection",
+  "indent_guides": {
+    "enabled": true
+  },
+  "minimap": {
+    "show": "never"
+  },
+  "format_on_save": "on",
+  "diagnostics_max_severity": "all",
+  "file_scan_exclusions": [
+    "**/.git",
+    "**/.venv",
+    "**/__pycache__",
+    "**/node_modules",
+    "**/target",
+    "**/.next",
+    "**/dist",
+    "**/.mypy_cache",
+    "**/.pytest_cache",
+    "**/.ruff_cache",
+    "..."
+  ],
+  "inlay_hints": {
+    "enabled": true,
+    "show_type_hints": true,
+    "show_parameter_hints": true
+  },
+  "lsp": {
+    "ty": {
+      "binary": {
+        "arguments": [
+          "server"
+        ]
+      }
+    },
+    "ruff": {
+      "binary": {
+        "arguments": [
+          "server"
+        ]
+      }
+    },
+    "rust-analyzer": {
+      "initialization_options": {
+        "check": {
+          "command": "clippy"
+        },
+        "cargo": {
+          "allFeatures": true,
+          "buildScripts": {
+            "enable": true
+          }
+        },
+        "procMacro": {
+          "enable": true
+        }
+      }
+    }
+  },
+  "languages": {
+    "Rust": {
+      "tab_size": 4,
+      "hard_tabs": false,
+      "format_on_save": "on",
+      "ensure_final_newline_on_save": true,
+      "remove_trailing_whitespace_on_save": true
+    },
+    "Python": {
+      "tab_size": 4,
+      "hard_tabs": false,
+      "language_servers": [
+        "ty",
+        "ruff"
+      ],
+      "format_on_save": "on",
+      "formatter": [
+        {
+          "code_action": "source.fixAll.ruff"
+        },
+        {
+          "code_action": "source.organizeImports.ruff"
+        },
+        {
+          "language_server": {
+            "name": "ruff"
+          }
+        }
+      ],
+      "ensure_final_newline_on_save": true,
+      "remove_trailing_whitespace_on_save": true
+    },
+    "TypeScript": {
+      "tab_size": 2,
+      "hard_tabs": false,
+      "format_on_save": "on",
+      "ensure_final_newline_on_save": true,
+      "remove_trailing_whitespace_on_save": true
+    },
+    "TSX": {
+      "tab_size": 2,
+      "hard_tabs": false,
+      "format_on_save": "on",
+      "ensure_final_newline_on_save": true,
+      "remove_trailing_whitespace_on_save": true
+    },
+    "JavaScript": {
+      "tab_size": 2,
+      "hard_tabs": false,
+      "format_on_save": "on",
+      "ensure_final_newline_on_save": true,
+      "remove_trailing_whitespace_on_save": true
+    },
+    "JSON": {
+      "tab_size": 2,
+      "hard_tabs": false,
+      "ensure_final_newline_on_save": true,
+      "remove_trailing_whitespace_on_save": true
+    },
+    "JSONC": {
+      "tab_size": 2,
+      "hard_tabs": false,
+      "ensure_final_newline_on_save": true,
+      "remove_trailing_whitespace_on_save": true
+    },
+    "YAML": {
+      "tab_size": 2,
+      "hard_tabs": false,
+      "ensure_final_newline_on_save": true,
+      "remove_trailing_whitespace_on_save": true
+    },
+    "Markdown": {
+      "tab_size": 2,
+      "hard_tabs": false,
+      "soft_wrap": "bounded",
+      "preferred_line_length": 100,
+      "show_wrap_guides": false,
+      "ensure_final_newline_on_save": true,
+      "remove_trailing_whitespace_on_save": false
+    }
+  }
+}

@@ -3,7 +3,6 @@
   "installed_packages": [
     "Catppuccin color schemes",
     "LSP",
-    "LSP-pyright",
     "LSP-rust-analyzer",
     "LSP-tsgo",
     "MarkdownPreview",
@@ -11,7 +10,5 @@
     "Pretty JSON",
     "Table Editor"
   ],
-  "in_process_packages":
-  [
-  ],
+  "in_process_packages": []
 }

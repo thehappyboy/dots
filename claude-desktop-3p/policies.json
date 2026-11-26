@@ -10,16 +10,49 @@
     "coworkScheduledTasksEnabled": true,
     "coworkWebSearchEnabled": true,
     "keepAwakeEnabled": true,
-    "dockBounceEnabled": true,
-    "localAgentModeTrustedFolders": []
+    "dockBounceEnabled": true
   },
   "orgAccountPreferences": {
     "enabled": true,
     "preferredMode": "full_control"
   },
   "profile": {
+    "deploymentMode": "3p",
+    "deploymentDisplayName": "大帅哥",
     "disableAutoUpdates": true,
+    "disableDeepLinkRegistration": true,
+    "disableEssentialTelemetry": true,
+    "disableNonessentialTelemetry": true,
+    "disableNonessentialServices": true,
+    "endUserAttribution": false,
     "inferenceGatewayAutoModeServerChecks": false,
-    "skipWebFetchPreflight": true
+    "isDesktopExtensionEnabled": true,
+    "modelPrefer1mContext": true,
+    "alwaysStartWithDefaultModel": true,
+    "modelCatalogEnabled": true,
+    "builtinToolPolicy": {
+      "Bash": "allow",
+      "Edit": "allow",
+      "WebFetch": "allow",
+      "WebSearch": "allow"
+    },
+    "toolSearchEnabled": true,
+    "skipWebFetchPreflight": true,
+    "coworkEgressAllowedHosts": [
+      "*"
+    ],
+    "builtinBrowserEnabled": true,
+    "artifactsEnabled": true,
+    "artifactsDesignEnabled": true,
+    "artifactsSlidesEnabled": true,
+    "artifactsClaudeEnabled": true,
+    "claudeAiImport": {
+      "enabled": false,
+      "exportEnabled": false,
+      "bannerBehavior": "detect"
+    },
+    "banner": {
+      "enabled": false
+    }
   }
 }

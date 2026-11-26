@@ -4,11 +4,8 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "/opt/homebrew/bin/ccsp"
+    "command": "npx ccsp@latest"
   },
-  "theme": "dark",
-  "outputStyle": "Proactive",
   "effortLevel": "high",
-  "enableWorkflows": true,
-  "skipDangerousModePermissionPrompt": true
+  "enableWorkflows": true
 }

@@ -6,14 +6,28 @@ set -gx OBSIDIAN_CLI /Applications/Obsidian.app/Contents/MacOS
 # 清除 fish 启动问候语
 set fish_greeting
 
+# 动态检测 Homebrew 前缀（兼容 Apple Silicon /opt/homebrew 与 Intel /usr/local）
+if test -x /opt/homebrew/bin/brew
+    set -gx HOMEBREW_PREFIX /opt/homebrew
+else if test -x /usr/local/bin/brew
+    set -gx HOMEBREW_PREFIX /usr/local
+end
+
 # 路径配置 (使用 fish_add_path --global 避免污染 universal fish_user_paths)
-fish_add_path --global /opt/homebrew/bin
-fish_add_path --global /opt/homebrew/opt/openjdk/bin
-fish_add_path --global /opt/homebrew/opt/sqlite/bin
+if set -q HOMEBREW_PREFIX
+    fish_add_path --global $HOMEBREW_PREFIX/bin $HOMEBREW_PREFIX/sbin
+    for keg in openjdk sqlite
+        if test -d $HOMEBREW_PREFIX/opt/$keg/bin
+            fish_add_path --global $HOMEBREW_PREFIX/opt/$keg/bin
+        end
+    end
+end
+fish_add_path --global $HOME/.cargo/bin
 fish_add_path --global $HOME/.local/bin
-fish_add_path --global $PNPM_HOME
-fish_add_path --global $BUN_INSTALL/bin
-fish_add_path --global $OBSIDIAN_CLI
+fish_add_path --global --append $PNPM_HOME
+fish_add_path --global --append $BUN_INSTALL/bin
+fish_add_path --global --append $OBSIDIAN_CLI
+fish_add_path --global --append /Applications/magpie.app/Contents/MacOS
 
 # 代理配置（统一 127.0.0.1，容器 host 网络模式可用）
 set -gx http_proxy http://127.0.0.1:7897
@@ -96,14 +110,31 @@ if status is-interactive
         starship init fish | source
     end
 
+    # Zoxide 智能目录跳转
+    if command -q zoxide
+        zoxide init fish | source
+    end
+
     if command -q peekaboo
         peekaboo completions fish | source
     end
 
     # OpenClaw Completion
-    source "/Users/hades/.openclaw/completions/openclaw.fish" 2>/dev/null || :
+    if test -f "$HOME/.openclaw/completions/openclaw.fish"
+        source "$HOME/.openclaw/completions/openclaw.fish"
+    end
 end
 
 # Added by OrbStack: command-line tools and integration
 # This won't be added again if you remove it.
 source ~/.orbstack/shell/init2.fish 2>/dev/null || :
+
+# >>> magpie agy >>>
+function agy
+    if test -x '/Applications/magpie.app/Contents/MacOS/magpie'
+        '/Applications/magpie.app/Contents/MacOS/magpie' agy run $argv
+    else
+        command agy $argv
+    end
+end
+# <<< magpie agy <<<
